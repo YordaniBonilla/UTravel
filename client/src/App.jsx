@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
-// RHL only for front end development
-import { hot } from 'react-hot-loader';
+
+
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Home from './Components/Home.jsx';
+import Register from './Components/Register.jsx';
+import Login from './Components/Login.jsx';
 
 class App extends Component {
   render() {
-    return <div>Welcome to a Modern Minimal React Boilerplate</div>;
+    return (
+      <BrowserRouter>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/register" component={Register} />>
+            <Route path="/login"  component={Login} />
+          </Switch>
+    </BrowserRouter>
+    )
   }
 }
-// hot export works with RHL. Remove line 11 when starting fullstack integration
-export default hot(module)(App);
-// Uncomment line 13 & delete line 11 when starting fullstack integration
-// export default App;
+
+ export default App;
