@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Header from './Header';
+import HeaderComponent from './HeaderComponent';
 
 export default class Home extends Component{
 
@@ -7,7 +7,7 @@ export default class Home extends Component{
         return (
             <div className='App'>
               <header>
-                  <Header />
+                  <HeaderComponent />
               </header>
               <h1>This is the Home component</h1>
             </div>
