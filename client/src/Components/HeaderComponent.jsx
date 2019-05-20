@@ -1,16 +1,30 @@
-import React, {Component} from 'react';
-import {NavLink} from 'react-router-dom';
-
+import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
+import Button from "@material-ui/core/Button";
 
 export default class Header extends Component {
-
-    render() {
-        return (
-            <>
-                <NavLink to='/'><button className="button is-danger is-outlined">Home</button></NavLink>
-                <NavLink to='/register'><button className="button is-danger is-outlined">Register</button></NavLink>
-                <NavLink to='/login'><button className="button is-danger is-outlined">Login</button></NavLink>
-            </> // this is the shorter syntax for react fragment it allows you to wrap more than one element without having to wrap them all in individual div tags 
-        )
-    }
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <>
+        <NavLink to="/">
+          <Button variant="contained" color="primary">
+            Home
+          </Button>
+        </NavLink>
+        <NavLink to="/register">
+          <Button variant="contained" color="primary">
+            Register
+          </Button>
+        </NavLink>
+        <NavLink to="/login">
+          <Button variant="contained" color="primary">
+            Login
+          </Button>
+        </NavLink>
+      </>
+    );
+  }
 }
