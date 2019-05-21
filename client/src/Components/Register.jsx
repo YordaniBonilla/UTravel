@@ -66,66 +66,77 @@ class Register extends React.Component {
     name: "",
     email: "",
     aboutme: "",
+    password: "",
+    number: "",
     age: "",
-    currency: "",
-    value: "",
+    country: "",
+    value: ""
   };
 
   handleChangeName = name => event => {
     this.setState({
-      name : event.target.value
+      name: event.target.value
     });
   };
 
   handleChangeEmail = email => event => {
     this.setState({
-      email : event.target.value
+      email: event.target.value
     });
   };
 
   handleChangeAbout = aboutme => event => {
     this.setState({
-      aboutme : event.target.value
+      aboutme: event.target.value
+    });
+  };
+
+  handleChangePassword = password => event => {
+    this.setState({
+      password: event.target.value
+    });
+  };
+
+  handleChangeNumber = number => event => {
+    this.setState({
+      number: event.target.value
     });
   };
 
   handleChangeAge = age => event => {
     this.setState({
-      age : event.target.value
+      age: event.target.value
     });
   };
 
-  handleChangeCurrency = currency => event => {
+  handleChangeCountry = country => event => {
     this.setState({
-      currency : event.target.value
+      country: event.target.value
     });
   };
 
   handleChangeValue = value => event => {
     this.setState({
-      value : event.target.value
+      value: event.target.value
     });
   };
-  
-
 
   render() {
     const { classes } = this.props;
-    console.log(this.state.aboutme)
+    console.log(this.state.aboutme);
 
     return (
       <form
         className={(classes.container, classes.root)}
         noValidate
         autoComplete="off"
-
       >
         <TextField
           id="standard-name"
           label="Name"
           className={classes.textField}
           value={this.state.name}
-          onChange={this.handleChange("name")}
+          onChange={this.handleChangeName("name")}
           margin="dense"
         />
 
@@ -135,16 +146,18 @@ class Register extends React.Component {
           label="Email"
           defaultValue="Hello World"
           className={classes.textField}
+          value={this.state.email}
+          onChange={this.handleChangeEmail("email")}
           margin="normal"
         />
 
-         <TextField
+        <TextField
+          multiline
           id="standard-aboutme"
           label="aboutme"
-          multiline
           className={classes.textField}
           value={this.state.aboutme}
-          onChange={this.handleChangeaboutme("")}
+          onChange={this.handleChangeAbout("aboutme")}
           margin="dense"
         />
 
@@ -154,16 +167,18 @@ class Register extends React.Component {
           className={classes.textField}
           type="password"
           autoComplete="current-password"
+          value={this.state.password}
+          onChange={this.handleChangePassword("password")}
           margin="normal"
         />
-  
+
         <TextField
           id="standard-number"
           label="Number"
-          value={this.state.age}
-          onChange={this.handleChange("age")}
-          type="number"
           className={classes.textField}
+          value={this.state.number}
+          onChange={this.handleChangeAge("number")}
+          type="number"
           InputLabelProps={{
             shrink: true
           }}
@@ -171,12 +186,25 @@ class Register extends React.Component {
         />
 
         <TextField
-          id="standard-select-currency-native"
-          select
-          label="Select Countrie"
+          id="standard-age"
+          label="age"
           className={classes.textField}
-          value={this.state.currency}
-          onChange={this.handleChange("currency")}
+          value={this.state.age}
+          onChange={this.handleChangeAge("age")}
+          type="age"
+          InputLabelProps={{
+            shrink: true
+          }}
+          margin="normal"
+        />
+
+        <TextField
+          id="standard-select-country-native"
+          select
+          label="Select Country"
+          className={classes.textField}
+          value={this.state.country}
+          onChange={this.handleChangeCountry("country")}
           SelectProps={{
             native: true,
             MenuProps: {
