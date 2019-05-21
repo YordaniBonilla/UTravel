@@ -70,7 +70,7 @@ class Register extends React.Component {
     number: "",
     age: "",
     country: "",
-    value: ""
+    gender: ""
   };
 
   handleChangeName = name => event => {
@@ -115,16 +115,22 @@ class Register extends React.Component {
     });
   };
 
-  handleChangeValue = value => event => {
+  handleChangeValue = gender => event => {
     this.setState({
-      value: event.target.value
+      gender: event.target.value
     });
   };
 
   render() {
     const { classes } = this.props;
+    console.log(this.state.name);
+    console.log(this.state.email);
     console.log(this.state.aboutme);
-
+    console.log(this.state.password);
+    console.log(this.state.number);
+    console.log(this.state.age);
+    console.log(this.state.country);
+    console.log(this.state.gender);
     return (
       <form
         className={(classes.container, classes.root)}
@@ -144,7 +150,6 @@ class Register extends React.Component {
           required
           id="standard-required"
           label="Email"
-          defaultValue="Hello World"
           className={classes.textField}
           value={this.state.email}
           onChange={this.handleChangeEmail("email")}
@@ -177,7 +182,7 @@ class Register extends React.Component {
           label="Number"
           className={classes.textField}
           value={this.state.number}
-          onChange={this.handleChangeAge("number")}
+          onChange={this.handleChangeNumber("number")}
           type="number"
           InputLabelProps={{
             shrink: true
@@ -226,8 +231,8 @@ class Register extends React.Component {
             aria-label="Gender"
             name="gender1"
             className={classes.group}
-            value={this.state.value}
-            onChange={this.handleChange2}
+            value={this.state.gender}
+            onChange={this.handleChangeValue("gender")}
           >
             <FormControlLabel
               value="female"
