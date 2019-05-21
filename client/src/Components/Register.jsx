@@ -4,6 +4,12 @@ import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
 import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormControl from "@material-ui/core/FormControl";
+import FormLabel from "@material-ui/core/FormLabel";
 
 const styles = theme => ({
   container: {
@@ -20,56 +26,107 @@ const styles = theme => ({
   },
   menu: {
     width: 200
+  },
+  root: {
+    display: "flex"
+  },
+  formControl: {
+    margin: theme.spacing.unit * 3
+  },
+  group: {
+    margin: `${theme.spacing.unit}px 0`
   }
 });
 
 const countries = [
   {
-    value: "Country",
+    value: "us",
     label: "USA"
   },
   {
-    value: "Country",
+    value: "jp",
     label: "Japan"
   },
   {
-    value: "Country",
+    value: "mx",
     label: "Mexico"
   },
   {
-    value: "Country",
+    value: "rs",
     label: "Russia"
   },
   {
-    value: "Country",
+    value: "bzl",
     label: "Brazil"
   }
 ];
 
 class Register extends React.Component {
   state = {
-    name: "Cat in the Hat",
+    name: "",
+    email: "",
+    aboutme: "",
     age: "",
-    multiline: "Controlled",
-    currency: "EUR"
+    currency: "",
+    value: "",
   };
 
-  handleChange = name => event => {
-    this.setState({ [name]: event.target.value });
+  handleChangeName = name => event => {
+    this.setState({
+      name : event.target.value
+    });
   };
+
+  handleChangeEmail = email => event => {
+    this.setState({
+      email : event.target.value
+    });
+  };
+
+  handleChangeAbout = aboutme => event => {
+    this.setState({
+      aboutme : event.target.value
+    });
+  };
+
+  handleChangeAge = age => event => {
+    this.setState({
+      age : event.target.value
+    });
+  };
+
+  handleChangeCurrency = currency => event => {
+    this.setState({
+      currency : event.target.value
+    });
+  };
+
+  handleChangeValue = value => event => {
+    this.setState({
+      value : event.target.value
+    });
+  };
+  
+
 
   render() {
     const { classes } = this.props;
+    console.log(this.state.aboutme)
 
     return (
-      <form className={classes.container} noValidate autoComplete="off">
+      <form
+        className={(classes.container, classes.root)}
+        noValidate
+        autoComplete="off"
+
+      >
         <TextField
           id="standard-name"
           label="Name"
           className={classes.textField}
           value={this.state.name}
           onChange={this.handleChange("name")}
-          margin="normal"
+          margin="dense"
         />
 
         <TextField
@@ -81,6 +138,16 @@ class Register extends React.Component {
           margin="normal"
         />
 
+         <TextField
+          id="standard-aboutme"
+          label="aboutme"
+          multiline
+          className={classes.textField}
+          value={this.state.aboutme}
+          onChange={this.handleChangeaboutme("")}
+          margin="dense"
+        />
+
         <TextField
           id="standard-password-input"
           label="Password"
@@ -89,18 +156,7 @@ class Register extends React.Component {
           autoComplete="current-password"
           margin="normal"
         />
-
-        <TextField
-          id="standard-multiline-flexible"
-          label="About Me:"
-          multiline
-          rowsMax="4"
-          value={this.state.multiline}
-          onChange={this.handleChange("multiline")}
-          className={classes.textField}
-          margin="normal"
-        />
-
+  
         <TextField
           id="standard-number"
           label="Number"
@@ -136,6 +192,24 @@ class Register extends React.Component {
             </option>
           ))}
         </TextField>
+        <FormControl component="fieldset" className={classes.formControl}>
+          <FormLabel component="legend">Gender</FormLabel>
+          <RadioGroup
+            aria-label="Gender"
+            name="gender1"
+            className={classes.group}
+            value={this.state.value}
+            onChange={this.handleChange2}
+          >
+            <FormControlLabel
+              value="female"
+              control={<Radio />}
+              label="Female"
+            />
+            <FormControlLabel value="male" control={<Radio />} label="Male" />
+            <FormControlLabel value="other" control={<Radio />} label="Other" />
+          </RadioGroup>
+        </FormControl>
       </form>
     );
   }
