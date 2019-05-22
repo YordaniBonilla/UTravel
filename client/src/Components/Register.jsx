@@ -12,27 +12,25 @@ import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import { positions } from '@material-ui/system';
 
+
 const styles = theme => ({
   container: {
     display: "flex",
     flexWrap: "wrap"
   },
   textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-    width: 200
+    marginLeft: theme.spacing.unit * 50,
+    marginRight: theme.spacing.unit * 10,
+    width: 300
   },
   dense: {
-    marginTop: 19
+    margin: 20
   },
   menu: {
     width: 200
   },
   root: {
     display: "flex"
-  },
-  formControl: {
-    margin: theme.spacing.unit * 3
   },
   group: {
     margin: `${theme.spacing.unit}px 0`
@@ -61,7 +59,7 @@ const countries = [
     label: "Brazil"
   }
 ];
-
+console.log(styles)
 class Register extends React.Component {
   state = {
     name: "",
@@ -77,6 +75,7 @@ class Register extends React.Component {
   handleChangeName = name => event => {
     this.setState({
       name: event.target.value
+      
     });
   };
 
@@ -124,32 +123,30 @@ class Register extends React.Component {
 
   render() {
     const { classes } = this.props;
-    console.log(this.state.name);
-    console.log(this.state.email);
-    console.log(this.state.aboutme);
-    console.log(this.state.password);
-    console.log(this.state.number);
-    console.log(this.state.age);
-    console.log(this.state.country);
-    console.log(this.state.gender);
+    //this.props is pointing to This Module Components Props Like this.setState does!
+    console.log(this.props)
+    console.log(props)
+
     return (
       
-      <form
-        className={(classes.container, classes.root)}
-        noValidate
-        autoComplete="off"
-      >  
-       
-          
-        <Box
-        bgcolor="background.paper"
-        color="text.primary"
-        p={2}
-        position="absolute"
-        top={0}
-        left="10%"
-        zIndex="modal"
-      >
+      
+        <FormControl component="fieldset" className={classes.formControl}>
+        <FormLabel component="legend">Gender</FormLabel>
+          <RadioGroup
+            aria-label="Gender"
+            name="gender1"
+            className={classes.group}
+            value={this.state.gender}
+            onChange={this.handleChangeValue("gender")}
+          >
+            <FormControlLabel
+              value="female"
+              control={<Radio />}
+              label="Female"
+            />
+            <FormControlLabel value="male" control={<Radio />} label="Male" />
+            <FormControlLabel value="other" control={<Radio />} label="Other" />
+          </RadioGroup>
         <TextField
           id="standard-name"
           label="Name"
@@ -158,7 +155,7 @@ class Register extends React.Component {
           onChange={this.handleChangeName("name")}
           margin="dense"
         />
-      </Box>
+      
         <TextField
           required
           id="standard-required"
@@ -168,6 +165,7 @@ class Register extends React.Component {
           onChange={this.handleChangeEmail("email")}
           margin="normal"
         />
+        
 
         <TextField
           multiline
@@ -238,27 +236,9 @@ class Register extends React.Component {
             </option>
           ))}
         </TextField>
-        <Box>
-        <FormControl component="fieldset" className={classes.formControl}>
-          <FormLabel component="legend">Gender</FormLabel>
-          <RadioGroup
-            aria-label="Gender"
-            name="gender1"
-            className={classes.group}
-            value={this.state.gender}
-            onChange={this.handleChangeValue("gender")}
-          >
-            <FormControlLabel
-              value="female"
-              control={<Radio />}
-              label="Female"
-            />
-            <FormControlLabel value="male" control={<Radio />} label="Male" />
-            <FormControlLabel value="other" control={<Radio />} label="Other" />
-          </RadioGroup>
+          
         </FormControl>
-        </Box>
-      </form>
+      
       
     );
   }
