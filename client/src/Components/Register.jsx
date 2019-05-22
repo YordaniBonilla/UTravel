@@ -10,6 +10,7 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
+import { positions } from '@material-ui/system';
 
 const styles = theme => ({
   container: {
@@ -132,10 +133,22 @@ class Register extends React.Component {
     console.log(this.state.country);
     console.log(this.state.gender);
     return (
+      
       <form
         className={(classes.container, classes.root)}
         noValidate
         autoComplete="off"
+      >  
+       
+          
+        <Box
+        bgcolor="background.paper"
+        color="text.primary"
+        p={2}
+        position="absolute"
+        top={0}
+        left="10%"
+        zIndex="modal"
       >
         <TextField
           id="standard-name"
@@ -145,7 +158,7 @@ class Register extends React.Component {
           onChange={this.handleChangeName("name")}
           margin="dense"
         />
-
+      </Box>
         <TextField
           required
           id="standard-required"
@@ -225,6 +238,7 @@ class Register extends React.Component {
             </option>
           ))}
         </TextField>
+        <Box>
         <FormControl component="fieldset" className={classes.formControl}>
           <FormLabel component="legend">Gender</FormLabel>
           <RadioGroup
@@ -243,7 +257,9 @@ class Register extends React.Component {
             <FormControlLabel value="other" control={<Radio />} label="Other" />
           </RadioGroup>
         </FormControl>
+        </Box>
       </form>
+      
     );
   }
 }
