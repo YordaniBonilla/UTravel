@@ -6,8 +6,8 @@ const mysql = require('mysql2');
 const config = {
   host: 'localhost',
   user: 'root',
-  password: 'password',
-  database: 'yourDB',
+  password: 'Holacode1',
+  database: 'Users',
 };
 
 const connection = mysql.createConnection(config);
@@ -15,7 +15,7 @@ const connection = mysql.createConnection(config);
 //Example mysql query using Promises
 const sampleQuery = function() {
   return new Promise((resolve, reject) => {
-    connection.query('SELECT * FROM table', (err, data) => {
+    connection.query('SELECT * FROM Users', (err, data) => {
       if (err) {
         return reject(err);
       }

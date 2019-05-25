@@ -1,251 +1,137 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import { withStyles } from "@material-ui/core/styles";
-import MenuItem from "@material-ui/core/MenuItem";
-import TextField from "@material-ui/core/TextField";
-import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormControl from "@material-ui/core/FormControl";
-import FormLabel from "@material-ui/core/FormLabel";
-import { positions } from '@material-ui/system';
+import React, { Component } from "react";
+import axios from "axios";
 
-
-const styles = theme => ({
-  container: {
-    display: "flex",
-    flexWrap: "wrap"
-  },
-  textField: {
-    marginLeft: theme.spacing.unit * 50,
-    marginRight: theme.spacing.unit * 10,
-    width: 300
-  },
-  dense: {
-    margin: 20
-  },
-  menu: {
-    width: 200
-  },
-  root: {
-    display: "flex"
-  },
-  group: {
-    margin: `${theme.spacing.unit}px 0`
+class Register extends Component {
+  constructor() {
+    super();
+    this.state = {
+      fname: "",
+      lname: "",
+      email: "",
+      aboutme: "",
+      password: "",
+      number: "",
+      age: "",
+      country: ""
+    };
   }
-});
 
-const countries = [
-  {
-    value: "us",
-    label: "USA"
-  },
-  {
-    value: "jp",
-    label: "Japan"
-  },
-  {
-    value: "mx",
-    label: "Mexico"
-  },
-  {
-    value: "rs",
-    label: "Russia"
-  },
-  {
-    value: "bzl",
-    label: "Brazil"
+  onChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+
+  };
+  
+  onSubmit = (e) => {
+    e.preventDefault();
+    this.setState({ Redirect: event.target.value });
+    this.setState({ Tricks: event.target.value });
   }
-];
-console.log(styles)
-class Register extends React.Component {
-  state = {
-    name: "",
-    email: "",
-    aboutme: "",
-    password: "",
-    number: "",
-    age: "",
-    country: "",
-    gender: ""
-  };
-
-  handleChangeName = name => event => {
-    this.setState({
-      name: event.target.value
-      
-    });
-  };
-
-  handleChangeEmail = email => event => {
-    this.setState({
-      email: event.target.value
-    });
-  };
-
-  handleChangeAbout = aboutme => event => {
-    this.setState({
-      aboutme: event.target.value
-    });
-  };
-
-  handleChangePassword = password => event => {
-    this.setState({
-      password: event.target.value
-    });
-  };
-
-  handleChangeNumber = number => event => {
-    this.setState({
-      number: event.target.value
-    });
-  };
-
-  handleChangeAge = age => event => {
-    this.setState({
-      age: event.target.value
-    });
-  };
-
-  handleChangeCountry = country => event => {
-    this.setState({
-      country: event.target.value
-    });
-  };
-
-  handleChangeValue = gender => event => {
-    this.setState({
-      gender: event.target.value
-    });
-  };
-
+     
   render() {
-    const { classes } = this.props;
-    //this.props is pointing to This Module Components Props Like this.setState does!
-    console.log(this.props)
-    console.log(props)
-
+    const {
+      fname,
+      lname,
+      email,
+      aboutme,
+      password,
+      number,
+      age,
+      country
+    } = this.state;
+    console.log(fname);
+    console.log(lname);
+    console.log(aboutme);
+    console.log(password);
+    console.log(number);
     return (
-      
-      
-        <FormControl component="fieldset" className={classes.formControl}>
-        <FormLabel component="legend">Gender</FormLabel>
-          <RadioGroup
-            aria-label="Gender"
-            name="gender1"
-            className={classes.group}
-            value={this.state.gender}
-            onChange={this.handleChangeValue("gender")}
-          >
-            <FormControlLabel
-              value="female"
-              control={<Radio />}
-              label="Female"
-            />
-            <FormControlLabel value="male" control={<Radio />} label="Male" />
-            <FormControlLabel value="other" control={<Radio />} label="Other" />
-          </RadioGroup>
-        <TextField
-          id="standard-name"
-          label="Name"
-          className={classes.textField}
-          value={this.state.name}
-          onChange={this.handleChangeName("name")}
-          margin="dense"
-        />
-      
-        <TextField
-          required
-          id="standard-required"
-          label="Email"
-          className={classes.textField}
-          value={this.state.email}
-          onChange={this.handleChangeEmail("email")}
-          margin="normal"
-        />
+      <form autoComplete="on" className="block" onSubmit={this.onSubmit}>
+        <div style={{color:"red"}}>
+          <label>First Name</label>
+          <input
+            id="first-name"
+            type="text"
+            name="fname"
+            value={fname}
+            onChange={this.onChange}
+          />
+        </div>
+        <div  style={{color:"red"}}>
+          <label>Last Name</label>
+          <input
+            id="last-name"
+            type="text"
+            name="lname"
+            value={lname}
+            onChange={this.onChange}
+          />
+        </div>
+        <div  style={{color:"red"}}>
+          <label>Email</label>
+          <input
+            id="email"
+            type="text"
+            name="email"
+            value={email}
+            onChange={this.onChange}
+          />
+        </div>
+        <div  style={{color: "red"}}>
+          <label>About Me:</label>
+          <input
+            id="about-me"
+            type="text"
+            name="aboutme"
+            maxLength="500"
+            value={aboutme}
+            onChange={this.onChange}
+          />
+        </div>
+        <div  style={{color:"red"}}>
+          <label>Password</label>
+          <input
+            id="password"
+            type="text"
+            maxLength="10"
+            name="password"
+            value={password}
+            onChange={this.onChange}
+          />
+        </div>
+        <div  style={{color:"red"}}>
+          <label>Number</label>
+          <input
+            id="number"
+            type="number"
+            name="number"
+            value={number}
+            onChange={this.onChange}
+          />
+        </div>
+        <div  style={{color:"red"}}>
+          <label>Age</label>
+          <input
+            id="age"
+            type="number"
+            name="age"
+            value={age}
+            onChange={this.onChange}
+          />
+        </div>
+        <div  style={{color:"red"}}>
+          <label>Country</label>
+          <input
+            id="country"
+            type="text"
+            name="country"
+            value={country}
+            onChange={this.onChange}
+          />
+        </div>
+        <button type="submit">Submit</button>
         
-
-        <TextField
-          multiline
-          id="standard-aboutme"
-          label="aboutme"
-          className={classes.textField}
-          value={this.state.aboutme}
-          onChange={this.handleChangeAbout("aboutme")}
-          margin="dense"
-        />
-
-        <TextField
-          id="standard-password-input"
-          label="Password"
-          className={classes.textField}
-          type="password"
-          autoComplete="current-password"
-          value={this.state.password}
-          onChange={this.handleChangePassword("password")}
-          margin="normal"
-        />
-
-        <TextField
-          id="standard-number"
-          label="Number"
-          className={classes.textField}
-          value={this.state.number}
-          onChange={this.handleChangeNumber("number")}
-          type="number"
-          InputLabelProps={{
-            shrink: true
-          }}
-          margin="normal"
-        />
-
-        <TextField
-          id="standard-age"
-          label="age"
-          className={classes.textField}
-          value={this.state.age}
-          onChange={this.handleChangeAge("age")}
-          type="age"
-          InputLabelProps={{
-            shrink: true
-          }}
-          margin="normal"
-        />
-
-        <TextField
-          id="standard-select-country-native"
-          select
-          label="Select Country"
-          className={classes.textField}
-          value={this.state.country}
-          onChange={this.handleChangeCountry("country")}
-          SelectProps={{
-            native: true,
-            MenuProps: {
-              className: classes.menu
-            }
-          }}
-          helperText="Please select your countrie"
-          margin="normal"
-        >
-          {countries.map(option => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </TextField>
-          
-        </FormControl>
-      
-      
+      </form>
     );
   }
 }
 
-Register.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-
-export default withStyles(styles)(Register);
+export default Register;

@@ -16,7 +16,7 @@ export default class Header extends Component {
         </NavLink>
         <NavLink to="/register">
           <Button variant="contained" color="primary">
-            Register
+            Create an Account
           </Button>
         </NavLink>
         <NavLink to="/login">
@@ -24,6 +24,11 @@ export default class Header extends Component {
             Login
           </Button>
         </NavLink>
+        <NavLink to="/create">
+          <Button variant="contained" color="primary">
+            Share Home
+          </Button>
+        </NavLink> 
       </>
     );
   }
