@@ -27,7 +27,7 @@ app.post('/register', function(req, res) {
 
 
 app.get('/', function(req,res) {
-  res.end(JSON.stringify(req.query)
+  res.end(JSON.stringify(req.query))
   //contains the URL query parameters (after the ? in the URL).
 })
 
