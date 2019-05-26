@@ -13,7 +13,8 @@ const config = {
 const connection = mysql.createConnection(config);
 
 //Example mysql query using Promises
-const sampleQuery = function() {
+
+const userInfo = function() {
   return new Promise((resolve, reject) => {
     connection.query('SELECT * FROM Users', (err, data) => {
       if (err) {
@@ -25,5 +26,5 @@ const sampleQuery = function() {
 };
 
 module.exports = {
-  sampleQuery,
+  userInfo,
 };

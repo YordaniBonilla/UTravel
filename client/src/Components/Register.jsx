@@ -23,8 +23,11 @@ class Register extends Component {
   
   onSubmit = (e) => {
     e.preventDefault();
-    this.setState({ Redirect: event.target.value });
-    this.setState({ Tricks: event.target.value });
+    this.setState({ [e.target.name]: e.target.value});
+  }
+
+  getPost() {
+    axios.post("/register")
   }
      
   render() {

@@ -1,9 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const compression = require("compression");
-
 const app = express();
-
+const mysql = require('../database/mysql.js')
 //middleware
 app.use(compression());
 app.use(bodyParser.json());
@@ -25,10 +24,17 @@ app.post('/register', function(req, res) {
   connection.query("INSERT INTO `Users` (fname,lname,email,aboutme,password,number,age,country) VALUES ()" )
 });
 
-
-app.get('/', function(req,res) {
-  res.end(JSON.stringify(req.query))
-  //contains the URL query parameters (after the ? in the URL).
+app.get('/user', function(req, res){
+  mysql.userInfo((err, results) => {
+     if(err) {
+       console.log('No data recieved from database');
+       res.sendStatus(500);
+     } else {
+       res.status(200).json(results);
+     }
+   })
 })
+
+//app.get('/*', route.fallback); 
 
 module.exports = app
