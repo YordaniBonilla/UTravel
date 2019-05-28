@@ -25,7 +25,7 @@ class Register extends Component {
 
 
   //post method
-     addCommentPost(fname) {
+     addCommentPost = (fname) => {
      $.ajax({
        method: "POST",
        url: "/potatoe",
