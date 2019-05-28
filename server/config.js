@@ -35,6 +35,23 @@ app.get('/user', function(req, res){
    })
 })
 
+app.post('/forum', function(req, res){
+
+  let description = req.body.description;
+  let description2 = req.body.description2;
+ 
+  if(!description) {
+    res.sendStatus(400);
+  } else {
+    database.insertOne(description,description2,(err, results) => {
+      if (err) {
+        res.sendStatus(500);
+      } else {
+        res.status(200).json(results);
+      }
+    });
+  }
+ });
 //app.get('/*', route.fallback); 
 
 module.exports = app

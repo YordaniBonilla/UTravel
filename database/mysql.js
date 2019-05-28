@@ -6,25 +6,36 @@ const mysql = require('mysql2');
 const config = {
   host: 'localhost',
   user: 'root',
-  password: 'Holacode1',
+  password: 'Holacode',
   database: 'Users',
 };
 
 const connection = mysql.createConnection(config);
 
 //Example mysql query using Promises
-
-const userInfo = function() {
-  return new Promise((resolve, reject) => {
-    connection.query('SELECT * FROM Users', (err, data) => {
-      if (err) {
-        return reject(err);
-      }
-      return resolve(data);
-    });
+var userInfo = function(cb) {
+  con.query('SELECT * FROM Users', (err, results) => {
+    if(err) {
+      cb(err, null);
+    } else {
+      cb(null, results);
+    }
   });
-};
+ };
 
+ var insertOne = function(description, cb) {
+  con.query('INSERT INTO Users () VALUES (?, ?)',
+    [], (err, results) => {
+      if(err) {
+        cb(err, null);
+      } else {
+        console.log(results);
+        cb(null, results);
+      }
+    });
+ };
+ 
 module.exports = {
   userInfo,
+  insertOne
 };
