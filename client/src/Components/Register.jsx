@@ -16,6 +16,7 @@ class Register extends Component {
       country: "",
       users: []
     };
+    this.addCommentPost = this.addCommentPost.bind(this)
   }
 
   onChange = e => {
@@ -23,32 +24,10 @@ class Register extends Component {
 
   };
 
-
-  //post method
-     addCommentPost = (fname) => {
-     $.ajax({
-       method: "POST",
-       url: "/potatoe",
-       contentType: 'application/json',
-       data: JSON.stringify({
-         fname: fname
-       })
-    }).done(() => {
-       this.setState({fname: ""})
-     });
-   }
-  
-   //onsubmit
-  onSubmit = (e) => {
-    e.preventDefault();
-    const { fname } = this.state;
-    addCommentPost(fname);
-  };
-  
-  componentDidMount() {
-    //this.doGet();
+  onSubmit = () => {
+    
   }
-     
+   
   render() {
     const {
       fname,
@@ -66,10 +45,11 @@ class Register extends Component {
     console.log(password);
     console.log(number);
     return (
-      <form autoComplete="on" className="block" onSubmit={this.onSubmit}>
+      <form autoComplete="on" className="block">
         <div style={{color:"red"}}>
           <label>First Name</label>
           <input
+            required
             id="first-name"
             type="text"
             name="fname"
@@ -80,6 +60,7 @@ class Register extends Component {
         <div  style={{color:"red"}}>
           <label>Last Name</label>
           <input
+            required
             id="last-name"
             type="text"
             name="lname"
@@ -90,6 +71,7 @@ class Register extends Component {
         <div  style={{color:"red"}}>
           <label>Email</label>
           <input
+            required
             id="email"
             type="text"
             name="email"
@@ -100,6 +82,8 @@ class Register extends Component {
         <div  style={{color: "red"}}>
           <label>About Me:</label>
           <input
+
+            required
             id="about-me"
             type="text"
             name="aboutme"
@@ -111,6 +95,7 @@ class Register extends Component {
         <div  style={{color:"red"}}>
           <label>Password</label>
           <input
+            required
             id="password"
             type="text"
             maxLength="10"
@@ -122,6 +107,7 @@ class Register extends Component {
         <div  style={{color:"red"}}>
           <label>Number</label>
           <input
+            required
             id="number"
             type="number"
             name="number"
@@ -132,6 +118,7 @@ class Register extends Component {
         <div  style={{color:"red"}}>
           <label>Age</label>
           <input
+            required
             id="age"
             type="number"
             name="age"
@@ -142,6 +129,7 @@ class Register extends Component {
         <div  style={{color:"red"}}>
           <label>Country</label>
           <input
+            required
             id="country"
             type="text"
             name="country"
