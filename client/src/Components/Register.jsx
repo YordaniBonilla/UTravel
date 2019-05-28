@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import $ from "jquery";
 
 class Register extends Component {
   constructor() {
@@ -12,7 +13,8 @@ class Register extends Component {
       password: "",
       number: "",
       age: "",
-      country: ""
+      country: "",
+      users: []
     };
   }
 
@@ -20,14 +22,31 @@ class Register extends Component {
     this.setState({ [e.target.name]: e.target.value });
 
   };
+
+
+  //post method
+     addCommentPost(fname) {
+     $.ajax({
+       method: "POST",
+       url: "/potatoe",
+       contentType: 'application/json',
+       data: JSON.stringify({
+         fname: fname
+       })
+    }).done(() => {
+       this.setState({fname: ""})
+     });
+   }
   
+   //onsubmit
   onSubmit = (e) => {
     e.preventDefault();
-    this.setState({ [e.target.name]: e.target.value});
-  }
-
-  getPost() {
-    axios.post("/register")
+    const { fname } = this.state;
+    addCommentPost(fname);
+  };
+  
+  componentDidMount() {
+    //this.doGet();
   }
      
   render() {
@@ -130,7 +149,7 @@ class Register extends Component {
             onChange={this.onChange}
           />
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit" onClick={this.onSubmit}>Submit</button>
         
       </form>
     );
