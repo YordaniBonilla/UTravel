@@ -2,40 +2,35 @@
 //mysql2 npm package has support for Promises
 const mysql = require('mysql2');
 
+//require mysql2 tables 
+
 //change database credentials as needed
 const config = {
   host: 'localhost',
   user: 'root',
   password: 'Holacode',
-  database: 'Users',
+  database: 'UsersInfo',
 };
 
 const connection = mysql.createConnection(config);
 
 //Example mysql query using Promises
-var userInfo = function(cb) {
-  con.query('SELECT * FROM Users', (err, results) => {
-    if(err) {
-      cb(err, null);
-    } else {
-      cb(null, results);
-    }
-  });
- };
 
- var insertOne = function(description, cb) {
-  con.query('INSERT INTO Users () VALUES (?, ?)',
-    [], (err, results) => {
-      if(err) {
-        cb(err, null);
+
+ postUserInfo = (fname, cb) => {
+  connection.query(
+    'INSERT INTO users (fname) VALUES (?);',
+    [fname],
+    (error, results) => {
+      if (error) {
+        throw error;
       } else {
-        console.log(results);
-        cb(null, results);
+        cb(results);
       }
-    });
- };
- 
+    }
+  );
+};
+ //making userInfo and insertone function available to other modules
 module.exports = {
-  userInfo,
-  insertOne
+  postUserInfo
 };

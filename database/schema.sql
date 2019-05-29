@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS Users;
+DROP DATABASE IF EXISTS UsersInfo;
 /* if database exists then delete it*/
-CREATE DATABASE Users;
+CREATE DATABASE UsersInfo;
 /*creates Users database */
-USE Users;
+USE UsersInfo;
 /* tell the system what database to use*/
 /*then we create a table in database and poppulate it*/
 CREATE TABLE countries
@@ -12,7 +12,7 @@ country varchar
   (20)
 );
 
-  CREATE TABLE Users
+  CREATE TABLE users
   (
     id INT NOT NULL AUTO_INCREMENT PRIMARY key,
   fname varchar

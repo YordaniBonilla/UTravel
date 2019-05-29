@@ -16,42 +16,38 @@ class Register extends Component {
       country: "",
       users: []
     };
-  
   }
 
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
-
   };
 
-  postData = (url = '', data = {}) => {
+  postData = (url = "", data = {}) => {
     return fetch(url, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        "Content-Type": "application/json",
+        "Accept": "application/json"
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(data)
     })
       .then(response => response.json())
-      .then(() => this.getData(url))
       .catch(err => console.error(err));
-  }
-  onSubmit = (e) => {
+  };
+  
+  onSubmit = e => {
     e.preventDefault();
     const { fname } = this.state;
 
-      this.postData('/Users', {
-      fname: fname.toLowerCase(),
-      // quantity,
+    this.postData("/Users", {
+      fname: fname.toLowerCase()
     });
 
     this.setState({
-      fname: '',
-      //quantity: 0,
+      fname: ""
     });
-  }
-   
+  };
+
   render() {
     const {
       fname,
@@ -69,8 +65,8 @@ class Register extends Component {
     console.log(password);
     console.log(number);
     return (
-      <form autoComplete="on" className="block">
-        <div style={{color:"red"}}>
+      <form id="form" autoComplete="on">
+        <div style={{ color: "red" }}>
           <label>First Name</label>
           <input
             required
@@ -81,7 +77,7 @@ class Register extends Component {
             onChange={this.onChange}
           />
         </div>
-        <div  style={{color:"red"}}>
+        <div style={{ color: "red" }}>
           <label>Last Name</label>
           <input
             required
@@ -92,7 +88,7 @@ class Register extends Component {
             onChange={this.onChange}
           />
         </div>
-        <div  style={{color:"red"}}>
+        <div style={{ color: "red" }}>
           <label>Email</label>
           <input
             required
@@ -103,10 +99,9 @@ class Register extends Component {
             onChange={this.onChange}
           />
         </div>
-        <div  style={{color: "red"}}>
+        <div style={{ color: "red" }}>
           <label>About Me:</label>
           <input
-
             required
             id="about-me"
             type="text"
@@ -116,7 +111,7 @@ class Register extends Component {
             onChange={this.onChange}
           />
         </div>
-        <div  style={{color:"red"}}>
+        <div style={{ color: "red" }}>
           <label>Password</label>
           <input
             required
@@ -128,7 +123,7 @@ class Register extends Component {
             onChange={this.onChange}
           />
         </div>
-        <div  style={{color:"red"}}>
+        <div style={{ color: "red" }}>
           <label>Number</label>
           <input
             required
@@ -139,7 +134,7 @@ class Register extends Component {
             onChange={this.onChange}
           />
         </div>
-        <div  style={{color:"red"}}>
+        <div style={{ color: "red" }}>
           <label>Age</label>
           <input
             required
@@ -150,7 +145,7 @@ class Register extends Component {
             onChange={this.onChange}
           />
         </div>
-        <div  style={{color:"red"}}>
+        <div style={{ color: "red" }}>
           <label>Country</label>
           <input
             required
@@ -161,8 +156,9 @@ class Register extends Component {
             onChange={this.onChange}
           />
         </div>
-        <button type="submit" onClick={this.onSubmit}>Submit</button>
-        
+
+        <button type="submit" onClick={this.onSubmit} value="Submit">Submit</button>
+
       </form>
     );
   }
