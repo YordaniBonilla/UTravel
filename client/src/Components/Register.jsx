@@ -16,7 +16,7 @@ class Register extends Component {
       country: "",
       users: []
     };
-    this.addCommentPost = this.addCommentPost.bind(this)
+  
   }
 
   onChange = e => {
@@ -24,8 +24,32 @@ class Register extends Component {
 
   };
 
-  onSubmit = () => {
-    
+  postData = (url = '', data = {}) => {
+    return fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(data),
+    })
+      .then(response => response.json())
+      .then(() => this.getData(url))
+      .catch(err => console.error(err));
+  }
+  onSubmit = (e) => {
+    e.preventDefault();
+    const { fname } = this.state;
+
+      this.postData('/Users', {
+      fname: fname.toLowerCase(),
+      // quantity,
+    });
+
+    this.setState({
+      fname: '',
+      //quantity: 0,
+    });
   }
    
   render() {
