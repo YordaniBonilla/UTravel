@@ -11,15 +11,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/../client/dist"));
 
 //HTTP Requests go here
-app.get('/user', function(req, res){
-  mysql.userInfo((err, results) => {
-     if(err) {
-       console.log('No data recieved from database');
-       res.sendStatus(500);
-     } else {
-       res.status(200).json(results);
-     }
-   })
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'), function(err) {
+    if (err) {
+      res.status(500).send(err)
+    }
+  })
 })
 
 app.post('/Users', routes.addUserInfo);
