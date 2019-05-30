@@ -8,41 +8,26 @@ USE UsersInfo;
 CREATE TABLE countries
 (
   id INT NOT NULL AUTO_INCREMENT PRIMARY key,
-country varchar
-  (20)
+country varchar (20)
 );
 
   CREATE TABLE users
   (
     id INT NOT NULL AUTO_INCREMENT PRIMARY key,
-  fname varchar
-    (50)
-
-  -- lastName varchar
-    -- (50),use
-  -- about varchar
-    -- (750),
-  -- email varchar
-    -- (40),
-  -- userpass varchar
-    -- (20),
-  -- phone varchar
-    -- (20),
-  -- age int (2),
-  -- userlocation int (2),
-  -- destination int (2),
-  -- picture varchar
-    -- (50),
-  -- twitter varchar
-    -- (50),
-  -- facebook varchar
-    -- (60), 
-  -- foreign key
-    -- (userlocation) references countries
-    -- (id),
-  -- foreign key
-    -- (destination) references countries
-    -- (id)
+    fname varchar (50),
+    lname varchar (50),
+    about varchar (750),
+    email varchar (40),
+    userpassword varchar (20),
+    userphone int (20),
+    age int (2),
+    userlocation int (2),
+    destination int (2),
+    picture varchar (50),
+    twitter varchar (50),
+    facebook varchar (60), 
+    foreign key (userlocation) references countries (id),
+    foreign key (destination) references countries (id)
 );
 
     INSERT INTO countries
