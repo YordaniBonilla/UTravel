@@ -16,7 +16,6 @@ class App extends Component {
           <Route path="/register" component={Register} />>
           <Route path="/login" component={SignIn} />
           <Route path="/create" component={Create}/>
-          <Route component={NoMatch}/>
         </Switch>
       </Router>
     );
