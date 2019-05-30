@@ -9,11 +9,9 @@ class Register extends Component {
       fname: "",
       lname: "",
       email: "",
-      aboutme: "",
-      password: "",
-      number: "",
+      userpassword: "",
+      userphone: "",
       age: "",
-      country: "",
       users: []
     };
   }
@@ -37,33 +35,36 @@ class Register extends Component {
   
   onSubmit = e => {
     e.preventDefault();
-    const { fname } = this.state;
+    const { fname, lname, email, userpassword, userphone, age } = this.state;
 
     this.postData("/Users", {
-      fname: fname.toLowerCase()
+      fname: fname.toLowerCase(),
+      lname: lname.toLowerCase(),
+      email: email.toLowerCase(),
+      userpassword: userpassword,
+      userphone: userphone,
+      age: age
     });
 
     this.setState({
-      fname: ""
+      fname: "",
+      lname: "",
+      email: "",
+      userpassword: "",
+      userphone: "",
+      age: ""
     });
   };
-
   render() {
     const {
       fname,
       lname,
       email,
-      aboutme,
-      password,
-      number,
-      age,
-      country
+      userpassword,
+      userphone,
+      age
     } = this.state;
-    console.log(fname);
-    console.log(lname);
-    console.log(aboutme);
-    console.log(password);
-    console.log(number);
+
     return (
       <form id="form" autoComplete="on">
         <div style={{ color: "red" }}>
@@ -99,38 +100,27 @@ class Register extends Component {
             onChange={this.onChange}
           />
         </div>
-        <div style={{ color: "red" }}>
-          <label>About Me:</label>
-          <input
-            required
-            id="about-me"
-            type="text"
-            name="aboutme"
-            maxLength="500"
-            value={aboutme}
-            onChange={this.onChange}
-          />
-        </div>
+        
         <div style={{ color: "red" }}>
           <label>Password</label>
           <input
             required
             id="password"
-            type="text"
+            type="password"
             maxLength="10"
-            name="password"
-            value={password}
+            name="userpassword"
+            value={userpassword}
             onChange={this.onChange}
           />
         </div>
         <div style={{ color: "red" }}>
-          <label>Number</label>
+          <label>Phone Number</label>
           <input
             required
             id="number"
             type="number"
-            name="number"
-            value={number}
+            name="userphone"
+            value={userphone}
             onChange={this.onChange}
           />
         </div>
@@ -145,18 +135,6 @@ class Register extends Component {
             onChange={this.onChange}
           />
         </div>
-        <div style={{ color: "red" }}>
-          <label>Country</label>
-          <input
-            required
-            id="country"
-            type="text"
-            name="country"
-            value={country}
-            onChange={this.onChange}
-          />
-        </div>
-
         <button type="submit" onClick={this.onSubmit} value="Submit">Submit</button>
 
       </form>
