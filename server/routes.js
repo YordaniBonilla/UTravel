@@ -1,4 +1,5 @@
 const database = require('../database/mysql.js');
+const path = require('path');
 //allows access to functions in mysql.js database
 exports.addUserInfo = (request, response) => {
 
@@ -10,3 +11,11 @@ exports.addUserInfo = (request, response) => {
       .end();
   });
 };
+
+exports.refresh = (req, res) => {
+  res.sendFile(path.join(__dirname, '/../client/dist/index.html'), function(err) {
+    if (err) {
+      res.status(500).send(err)
+    }
+  })
+}

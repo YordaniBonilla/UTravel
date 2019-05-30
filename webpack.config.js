@@ -1,10 +1,11 @@
-const path = require('path');
 
 module.exports = {
   entry: ['./client/src/Index.js'],
   output: {
-    filename: 'bundle.js',
     path: path.join(__dirname, 'client/dist'),
+    filename: 'bundle.js',
+    publicPath: '/'
+    
   },
   module: {
     rules: [
@@ -35,4 +36,11 @@ module.exports = {
     // respond to 404s with index.html
     inline: true,
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'dist/index.html'
+    })
+  ]
 };
+
+
