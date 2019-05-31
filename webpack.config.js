@@ -1,5 +1,8 @@
 
+const path = require('path');
+
 module.exports = {
+  
   entry: ['./client/src/Index.js'],
   output: {
     path: path.join(__dirname, 'client/dist'),
@@ -35,12 +38,7 @@ module.exports = {
     historyApiFallback: true,
     // respond to 404s with index.html
     inline: true,
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: 'dist/index.html'
-    })
-  ]
+  }
 };
 
 

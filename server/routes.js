@@ -1,8 +1,8 @@
 const database = require('../database/mysql.js');
-const path = require('path');
+var path = require('path');
+
 //allows access to functions in mysql.js database
 exports.addUserInfo = (request, response) => {
-
   const { fname, lname, email, userpassword, userphone, age } = request.body;
   database.postUserInfo(fname, lname, email, userpassword, userphone, age,  res => {
     response
