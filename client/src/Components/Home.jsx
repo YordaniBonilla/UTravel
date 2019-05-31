@@ -21,10 +21,6 @@ export default class Home extends Component {
       </MDBCol>
       </div>
       <div>
-        <h1>Discover New Places</h1>
-
-      </div>
-      <div>
         <Img
          src="https://singularityhub.com/wp-content/uploads/2018/06/autonomous-vehicles-cars-blurred-hong-kong-city-street-view-night-558632776.jpg"
          width={350}
