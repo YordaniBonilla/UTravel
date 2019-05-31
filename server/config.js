@@ -4,7 +4,6 @@ const compression = require("compression");
 const app = express();
 const mysql = require('../database/mysql.js');
 const routes = require('./routes.js');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 //middleware
 app.use(compression());
