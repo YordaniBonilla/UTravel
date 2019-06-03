@@ -10,25 +10,15 @@ export default class Header extends Component {
     return (
       <>
         <NavLink to="/">
-          <Button variant="contained" color="primary">
+          <Button style={{position: 'absolute', top: 20, left: 300, right: 100, bottom: 0, height: "35px", width: "80px"}}variant="contained" color="secondary">
             Home
           </Button>
         </NavLink>
         <NavLink to="/register">
-          <Button variant="contained" color="primary">
-            Create an Account
+          <Button style={{position: 'absolute', top: 20, left: 600, right: 100, bottom: 0, height: "35px", width: "80px"}} variant="contained" color="primary">
+           Upload Home
           </Button>
         </NavLink>
-        <NavLink to="/login">
-          <Button variant="contained" color="primary">
-            Login
-          </Button>
-        </NavLink>
-        <NavLink to="/create">
-          <Button variant="contained" color="primary">
-            Share Home
-          </Button>
-        </NavLink> 
       </>
     );
   }
