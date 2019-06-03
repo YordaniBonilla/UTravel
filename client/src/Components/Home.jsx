@@ -3,7 +3,6 @@ import HeaderComponent from "./HeaderComponent";
 import { MDBCol } from "mdbreact";
 import Img from 'react-image';
 import Image from 'react-image-resizer';
-import MediaCard from './MediaCard.jsx';
 
 export default class Home extends Component {
   render() {
@@ -28,9 +27,6 @@ export default class Home extends Component {
          height={300}
 
          />
-      </div>
-      <div>
-        <MediaCard/>
       </div>
       </div>
     );
