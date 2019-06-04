@@ -1,5 +1,5 @@
 import React, { Component } from "react";
- const axios = require('axios');
+import axios from 'axios';
 
 class  Login extends Component {
     constructor ()  {
@@ -15,8 +15,7 @@ class  Login extends Component {
     axios.get('/Login')
     .then((response) => {
     // handle success
-      console.log(response.data["0"].email)
-      console.log(response.data["0"].userpassword)
+      console.log(response)
       this.setState({
         email: response.data["0"].email,
         password: response.data["0"].userpassword

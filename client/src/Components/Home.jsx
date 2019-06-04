@@ -1,9 +1,26 @@
 import React, { Component } from "react";
 import HeaderComponent from "./HeaderComponent";
-import HomeCard from "../Components/HomeCard"
-import Login from "../Components/Login"
+import HomeCard from "../Components/HomeCard";
+import axios from "axios";
+
 export default class Home extends Component {
+  
+  
+  getData () {
+    axios.get('/', )
+    .then(function(response) {
+       console.log(response);
+    })
+    .catch(function(err) {
+      console.log(err);
+    })
+  }
+
+  componentDidMount() {
+    getData();
+  }
   render() {
+
     return (
       <div>
           <header>
