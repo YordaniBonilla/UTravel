@@ -11,7 +11,6 @@ class Register extends Component {
       email: "",
       userpassword: "",
       userphone: "",
-      age: "",
       users: []
     };
   }
@@ -35,15 +34,14 @@ class Register extends Component {
   
   onSubmit = e => {
     e.preventDefault();
-    const { fname, lname, email, userpassword, userphone, age } = this.state;
+    const { fname, lname, email, userpassword, userphone} = this.state;
 
     this.postData("/Users", {
       fname: fname.toLowerCase(),
       lname: lname.toLowerCase(),
       email: email.toLowerCase(),
       userpassword: userpassword,
-      userphone: userphone,
-      age: age
+      userphone: userphone
     });
 
     this.setState({
@@ -51,8 +49,7 @@ class Register extends Component {
       lname: "",
       email: "",
       userpassword: "",
-      userphone: "",
-      age: ""
+      userphone: ""
     });
   };
   render() {
@@ -61,8 +58,7 @@ class Register extends Component {
       lname,
       email,
       userpassword,
-      userphone,
-      age
+      userphone
     } = this.state;
 
     return (
@@ -121,17 +117,6 @@ class Register extends Component {
             type="number"
             name="userphone"
             value={userphone}
-            onChange={this.onChange}
-          />
-        </div>
-        <div style={{ color: "red" }}>
-          <label>Age</label>
-          <input
-            required
-            id="age"
-            type="number"
-            name="age"
-            value={age}
             onChange={this.onChange}
           />
         </div>
