@@ -22,7 +22,7 @@ refresh = (req, res) => {
 
 loginVerification = (request, response) => {
   database.getLoginInfo(data => {
-    response.status(200).send(data).end();
+    response.status(200).send(data);
     console.log(data)
   });
 };

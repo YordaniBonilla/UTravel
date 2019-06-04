@@ -8,13 +8,14 @@ class  Login extends Component {
             email : "",
             password : ""
         }
+
     }
-    
+
     getData () {
-    axios.get('/login')
+    axios.get('/Login')
     .then(function (response) {
     // handle success
-    console.log(response.data);
+    console.log(response.data["0"].email);
     })
     .catch(function (error) {
     // handle error
@@ -22,7 +23,7 @@ class  Login extends Component {
     })
     }
 
-    componentDidMount(){
+    onSubmit = () => {
     this.getData();
     }
 
@@ -31,6 +32,7 @@ class  Login extends Component {
         <div>
           <input type="text" placeholder="email"/>
           <input type="password" placeholder="password"/>
+          <input type="submit" onClick={this.onSubmit}/>
         </div>
         );
     }

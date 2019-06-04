@@ -3,7 +3,7 @@ import Img from 'react-image';
 import Image from 'react-image-resizer';
 
 function HomeCard (props) {
-    console.log(props)
+
     return ( 
         <div>
          <img src={props.userInfo.imageUrl} height={300} width={350}/>
