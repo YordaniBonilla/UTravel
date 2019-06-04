@@ -13,9 +13,15 @@ class  Login extends Component {
 
     getData () {
     axios.get('/Login')
-    .then(function (response) {
+    .then((response) => {
     // handle success
-    console.log(response.data["0"].email);
+      console.log(response.data["0"].email)
+      console.log(response.data["0"].userpassword)
+      this.setState({
+        email: response.data["0"].email,
+        password: response.data["0"].userpassword
+      });
+    console.log(this.state);
     })
     .catch(function (error) {
     // handle error
