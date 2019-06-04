@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import $ from "jquery";
 
 class Register extends Component {
   constructor() {
@@ -19,41 +18,34 @@ class Register extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
   
-  
-
-  postData = (url = "", data = {}) => {
-    return fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify(data)
-    })
-      .then(response => response.json())
-      .catch(err => console.error(err));
-  };
-  
+ 
   onSubmit = e => {
     e.preventDefault();
-    const { fname, lname, email, userpassword, userphone} = this.state;
+    const user = {
+      fname: this.state.fname.toLowerCase(),
+      lname: this.state.lname.toLowerCase(),
+      email: this.state.email.toLowerCase(),
+      userpassword: this.state.userpassword,
+      userphone: this.state.userphone
+    };
 
-    this.postData("/Users", {
-      fname: fname.toLowerCase(),
-      lname: lname.toLowerCase(),
-      email: email.toLowerCase(),
-      userpassword: userpassword,
-      userphone: userphone
-    });
+     axios.post("/Users", { user })
+      .then(response => {
+    
+      }).catch(error => {
+        console.log(error);
+      });
 
-    this.setState({
+      this.setState({
       fname: "",
       lname: "",
       email: "",
       userpassword: "",
       userphone: ""
     });
-  };
+    };
+    
+
   render() {
     const {
       fname,
@@ -116,7 +108,7 @@ class Register extends Component {
           <input
             required
             id="number"
-            type="number"
+            type="text"
             name="userphone"
             value={userphone}
             onChange={this.onChange}

@@ -20,7 +20,7 @@ const connection = mysql.createConnection(config);
  postUserInfo = (fname, lname, email, userpassword, userphone, cb) => {
   connection.query(
     'INSERT INTO users (fname, lname, email, userpassword, userphone) VALUES (?, ?, ?, ?, ?);',
-    [fname, lname, email, userpassword, userphone, age],
+    [fname, lname, email, userpassword, userphone],
     (error, results) => {
       if (error) {
         throw error;
@@ -32,7 +32,7 @@ const connection = mysql.createConnection(config);
 };
 
 getLoginInfo = cb => {
-connection.query('SELECT * from users', (error, results) => {
+connection.query('SELECT email, userpassword from users' , (error, results) => {
     if (error) {
       throw error;
     } else {
