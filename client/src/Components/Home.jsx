@@ -9,7 +9,7 @@ export default class Home extends Component {
           <header>
             <HeaderComponent />
           </header>
-          <HomeItem/>
+          <HomeItem phone="" email="" name="" country="" image=""/>
       </div>
     );
   }

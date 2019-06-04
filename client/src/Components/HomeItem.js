@@ -2,7 +2,8 @@ import React from "react";
 import Img from 'react-image';
 import Image from 'react-image-resizer';
 
-function HomeItem () {
+function HomeItem (props) {
+    console.log(props)
     return ( 
         <div>
          <Img
@@ -11,11 +12,13 @@ function HomeItem () {
          height={300}
 
          />
-         <h3>Mexico</h3>
-         <p>Phone: (212) 555-4567</p>
-         <p>Email: thecat@hotmail.com</p>
-         <p>Twitter</p>
-         <p>FaceBook</p>
+         //here inside the h3 tag to read javascript an expression container is needed
+         //to access the passed in props we need to access the props object with the key name of the passed in value
+         <h3>Country:{props.country}</h3>
+         <p>Phone: {props.phone}</p>
+         <p>Email: {props.email}</p>
+         <p>Name: {props.name}</p>
+
         </div>
         );
    
