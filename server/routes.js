@@ -2,7 +2,7 @@ const database = require('../database/mysql.js');
 var path = require('path');
 
 //allows access to functions in mysql.js database
-exports.addUserInfo = (request, response) => {
+addUserInfo = (request, response) => {
   const { fname, lname, email, userpassword, userphone, age } = request.body;
   database.postUserInfo(fname, lname, email, userpassword, userphone, age,  res => {
     response
@@ -12,7 +12,7 @@ exports.addUserInfo = (request, response) => {
   });
 };
 
-exports.refresh = (req, res) => {
+refresh = (req, res) => {
   res.sendFile(path.join(__dirname, '/../client/dist/index.html'), function(err) {
     if (err) {
       res.status(500).send(err)
@@ -20,5 +20,16 @@ exports.refresh = (req, res) => {
   })
 }
 
+loginVerification = (request, response) => {
+  database.getLoginInfo(data => {
+    response.status(200).send(data).end();
+    console.log(data)
+  });
+};
 
+module.exports = {
+  addUserInfo,
+  refresh,
+  loginVerification
+};
 
