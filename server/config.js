@@ -14,8 +14,9 @@ app.use(express.static(__dirname + "/../client/dist"));
 
 app.post('/Users', routes.addUserInfo);
 
+app.get('/Login', routes.loginVerification)
+
 app.get('/*', routes.refresh)
 
-console.log(app.get('/login', routes.loginVerification))
 
 module.exports = app
