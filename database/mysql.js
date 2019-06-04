@@ -17,9 +17,9 @@ const connection = mysql.createConnection(config);
 //Example mysql query using Promises
 
 
- postUserInfo = (fname, lname, email, userpassword, userphone, age, cb) => {
+ postUserInfo = (fname, lname, email, userpassword, userphone, cb) => {
   connection.query(
-    'INSERT INTO users (fname, lname, email, userpassword, userphone, age) VALUES (?, ?, ?, ?, ?, ?);',
+    'INSERT INTO users (fname, lname, email, userpassword, userphone) VALUES (?, ?, ?, ?, ?);',
     [fname, lname, email, userpassword, userphone, age],
     (error, results) => {
       if (error) {
@@ -30,7 +30,17 @@ const connection = mysql.createConnection(config);
     }
   );
 };
- //making userInfo and insertone function available to other modules
+
+getLoginInfo = cb => {
+connection.query('SELECT * from users', (error, results) => {
+    if (error) {
+      throw error;
+    } else {
+      cb(results);
+    }
+  });
+}; //making userInfo and insertone function available to other modules
 module.exports = {
-  postUserInfo
+  postUserInfo,
+  getLoginInfo
 };

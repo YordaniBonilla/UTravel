@@ -4,7 +4,6 @@ const compression = require("compression");
 const app = express();
 const mysql = require('../database/mysql.js');
 const routes = require('./routes.js');
-
 //middleware
 app.use(compression());
 app.use(bodyParser.json());
@@ -16,5 +15,7 @@ app.use(express.static(__dirname + "/../client/dist"));
 app.post('/Users', routes.addUserInfo);
 
 app.get('/*', routes.refresh)
+
+console.log(app.get('/login', routes.loginVerification))
 
 module.exports = app
