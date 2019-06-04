@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import HeaderComponent from "./HeaderComponent";
 import HomeCard from "../Components/HomeCard"
-
+import Login from "../Components/Login"
 export default class Home extends Component {
   render() {
     return (
