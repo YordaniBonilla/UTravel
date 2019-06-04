@@ -2,7 +2,7 @@ import React from "react";
 import Img from 'react-image';
 import Image from 'react-image-resizer';
 
-function HomeItem (props) {
+function HomeCard (props) {
     console.log(props)
     return ( 
         <div>
@@ -24,4 +24,4 @@ function HomeItem (props) {
    
 }
 
-export default HomeItem;
+export default HomeCard;
