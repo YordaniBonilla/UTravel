@@ -6,7 +6,7 @@ function HomeCard (props) {
     console.log(props)
     return ( 
         <div>
-         <img src={props.userInfo.imageUrl}/>
+         <img src={props.userInfo.imageUrl} height={300} width={350}/>
          {/*here inside the h3 tag to read javascript an expression container is needed*/}
          {/*to access the passed in props we need to access the props object with the key name of the passed in value*/}
          <h3>Country:{props.userInfo.country}</h3>
