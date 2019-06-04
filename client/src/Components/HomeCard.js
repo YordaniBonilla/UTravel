@@ -13,7 +13,7 @@ function HomeCard (props) {
          <p>Phone: {props.userInfo.phone}</p>
          <p>Email: {props.userInfo.email}</p>
          <p>Name: {props.userInfo.name}</p>
-
+         <hr/>
         </div>
         );
    
