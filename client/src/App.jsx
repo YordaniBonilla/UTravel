@@ -25,7 +25,6 @@ class App extends Component {
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login}/>
           <Route path="/swap" render={() => <Greeting isLoggedIn={this.state.isLoggedIn} />}/>
-
         </Switch>
       </Router>
     );
