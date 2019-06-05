@@ -18,6 +18,10 @@ app.post('/Users', routes.addUserInfo);
 app.get('/Login', routes.loginVerification)
 //gets all user data from users table
 app.get('/home', routes.homeCardInfo)
+
+app.post('/swap',function (req, res) {
+  res.send('POST request to the homepage')
+})
 //if route has no get, page falls back to html to rerender component
 app.get('/*', routes.refresh)
 

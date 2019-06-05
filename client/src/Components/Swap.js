@@ -11,16 +11,20 @@ class Swap extends Component {
    
     fileSelectedHandler = event => {
         this.setState({
-            selectedFile: event.target.files[0];
+            selectedFile: event.target.files[0]
         })
         console.log(event.target.files[0]);
     }
     //set state before uploading file
     fileUploadHandler = () => {
-        const fd = new newFormData();
+        const fd = new FormData();
         //formData.append(name, value, filename);
         fd.append('image', this.state.selectedFile, this.state.selectedFile.name)
-        axios.post('/swap',fd)
+        axios.post('/swap',fd, {
+            onUploadProgress: progressEvent => {
+                console.log('Upload Progress:' + Math.round(progressEvent.loaded / progressEvent.total* 100)+ '%' )
+            }
+        })
           .then(res => {
             console.log(res);
           })
