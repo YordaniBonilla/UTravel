@@ -8,8 +8,7 @@ export default class Home extends Component {
   constructor() {
     super();
     this.state = {
-      data: [],
-      isLoggedIn: false
+      data: []
     }
   }
   
@@ -48,7 +47,7 @@ export default class Home extends Component {
             </div> :
             <h1>No Data</h1>
           }
-          <Greeting isLoggedIn={this.state.isLoggedIn}/>
+          
       </div>
     );
   }

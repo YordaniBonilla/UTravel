@@ -1,6 +1,6 @@
 import React from 'react';
-import Swap from './Components/Swap';
-import GuestGreeting from './Components/GuestGreeting';
+import Swap from '../Components/Swap';
+import GuestGreeting from '../Components/GuestGreeting';
 
 function Greeting (props) {
     const isLoggedIn = props.isLoggedIn;

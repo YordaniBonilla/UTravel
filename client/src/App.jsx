@@ -3,8 +3,20 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./Components/Home.jsx";
 import Register from "./Components/Register.jsx";
 import Login from "./Components/Login.jsx";
-import Swap from "./Components/Swap"
+import Swap from "./Components/Swap";
+import Greeting from "./Components/Greeting";
+import GuestGreeting from "./Components/GuestGreeting"
+
 class App extends Component {
+  constructor() {
+    super();
+  this.state = {
+    isLoggedIn: false
+  }
+
+ }
+
+
   render() {
     return (
       <Router>
@@ -12,7 +24,8 @@ class App extends Component {
           <Route path="/" exact component={Home} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login}/>
-          <Route path="/swap" component={Swap}/>
+          <Route path="/swap" component={() => <Greeting isLoggedIn={this.state.isLoggedIn} />}/>
+          render={(props) => <Dashboard isLoggedIn={this.state.isLoggedIn} />}
         </Switch>
       </Router>
     );
