@@ -24,6 +24,11 @@ export default class Header extends Component {
             Login
           </Button>
         </NavLink>
+        <NavLink to ="/swap">
+          <Button style={{position: 'relative', float: 'right'}} variant="contained" color="primary">          
+            Swap
+          </Button>
+        </NavLink>
       </>
     );
   }
