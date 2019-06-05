@@ -39,8 +39,21 @@ connection.query('SELECT email, userpassword from users' , (error, results) => {
       cb(results);
     }
   });
-}; //making userInfo and insertone function available to other modules
+}; 
+
+
+userCardInfo =  cb => {
+  connection.query('SELECT * from users', (error, rows) => {
+    if(error) {
+      throw error;
+    } else {
+      cb(rows);
+    }
+  });
+};
+//making userInfo and insertone function available to other modules
 module.exports = {
   postUserInfo,
-  getLoginInfo
+  getLoginInfo,
+  userCardInfo
 };

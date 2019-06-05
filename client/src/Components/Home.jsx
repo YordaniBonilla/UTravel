@@ -4,23 +4,37 @@ import HomeCard from "../Components/HomeCard";
 import axios from "axios";
 
 export default class Home extends Component {
-  
+  constructor() {
+    super();
+    this.state = {
+      data: undefined
+    }
+  }
   
   getData () {
-    axios.get('/', )
-    .then(function(response) {
-       console.log(response);
+    axios.get('/home')
+    .then(response => {
+      this.setState({
+        data: response.data["0"]
+      }) 
+       console.log("this is the state",this.state.data)
     })
     .catch(function(err) {
       console.log(err);
     })
-  }
+  };
 
   componentDidMount() {
-    getData();
+    this.getData();
+
   }
   render() {
-
+     
+    /*.map(joke => {
+        return (
+            <Joke question={joke.question} punchLine={joke.punchLine} />
+        )
+    })*/
     return (
       <div>
           <header>
