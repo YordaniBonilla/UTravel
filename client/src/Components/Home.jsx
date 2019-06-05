@@ -29,10 +29,11 @@ export default class Home extends Component {
 
   }
   render() {
-     
-    /*.map(joke => {
+     /*console.log(this.state)
+     const { data } = this.state
+     data.map(obj => {
         return (
-            <Joke question={joke.question} punchLine={joke.punchLine} />
+            <HomeCard question={data.userlocation} punchLine={data.userphone} />
         )
     })*/
     return (
