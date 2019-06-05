@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import HeaderComponent from "./HeaderComponent";
 import HomeCard from "../Components/HomeCard";
 import axios from "axios";
+import Greeting from "../Components/Greeting";
 
 export default class Home extends Component {
   constructor() {
     super();
     this.state = {
-      data: []
+      data: [],
+      isLoggedIn: false
     }
   }
   
@@ -46,7 +48,7 @@ export default class Home extends Component {
             </div> :
             <h1>No Data</h1>
           }
-         
+          <Greeting isLoggedIn={this.state.isLoggedIn}/>
       </div>
     );
   }
