@@ -11,7 +11,7 @@ class App extends Component {
   constructor() {
     super();
   this.state = {
-    isLoggedIn: false
+    isLoggedIn: true
   }
 
  }
@@ -24,8 +24,8 @@ class App extends Component {
           <Route path="/" exact component={Home} />
           <Route path="/register" component={Register} />
           <Route path="/login" component={Login}/>
-          <Route path="/swap" component={() => <Greeting isLoggedIn={this.state.isLoggedIn} />}/>
-          render={(props) => <Dashboard isLoggedIn={this.state.isLoggedIn} />}
+          <Route path="/swap" render={() => <Greeting isLoggedIn={this.state.isLoggedIn} />}/>
+
         </Switch>
       </Router>
     );
