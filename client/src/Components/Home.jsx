@@ -28,6 +28,7 @@ export default class Home extends Component {
 
   }
   render() {
+    console.log(this.state)
      const {data} = this.state
     return (
       <div>
