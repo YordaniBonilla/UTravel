@@ -29,9 +29,7 @@ country varchar (20)
     foreign key (userlocation) references countries (id),
     foreign key (destination) references countries (id)
 );
-<!--SELECT MAX( `column` ) FROM `table` ;-->
-DELETE from [table name] where [field name] = 'whatever';
-end with \G to show data as vertical rows
+
     INSERT INTO countries
       (country)
     VALUE
