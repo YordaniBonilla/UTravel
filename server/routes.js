@@ -24,13 +24,20 @@ refresh = (req, res) => {
 loginVerification = (request, response) => {
   database.getLoginInfo(data => {
     response.status(200).send(data);
-    console.log(data)
+    console.log(data);
   });
 };
 
+homeCardInfo = (request, response) => {
+  database.userCardInfo(rows => {
+    response.status(200).send(rows);
+    console.log(rows);
+  })
+}
 module.exports = {
   addUserInfo,
   refresh,
-  loginVerification
+  loginVerification,
+  homeCardInfo
 };
 
