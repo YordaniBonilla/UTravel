@@ -8,15 +8,43 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
+import axios from "axios";
 
+class HomeCard extends React.Component {
+      constructor() {
+    super();
+    this.state = {
+      data: []
+    }
+    }
+    
+    getData () {
+    axios.get('/home')
+    .then(response => {
+      this.setState({
+        data: response.data
+      }) 
+    })
+    .catch(function(err) {
+      console.log(err);
+    })
+  };
 
-function HomeCard (props) {
- 
+  componentDidMount() {
+    this.getData();
+
+  }
+
+    render () {
+        console.log(this.state)
+     const {data} = this.state
+     console.log(data)
+     
     return ( 
         <div style={{ marginTop: 10, padding: 10 }}>
       <Grid container  justify="flex-start">
-        
-          <Grid container item xs={12} spacing={3} key={props.data.userlocation}>
+          {data.map(data => (
+          <Grid container item xs={8} spacing={8} key={data.id}>
             <Card>
               <CardActionArea>
                 <CardMedia
@@ -29,10 +57,10 @@ function HomeCard (props) {
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                  {props.data.fname}
+                  {data.fname}
                   </Typography>
-                  <Typography component="p">Phone: {props.data.userphone}</Typography>
-                  <Typography component="p">Email: {props.data.email}</Typography>
+                  <Typography component="p">Phone: {data.userphone}</Typography>
+                  <Typography component="p">Email: {data.email}</Typography>
                   <Typography style={{width: 250}}component="p">About: Its a home right in the heart of the city , there are many parks around and restaurant near the area.
                   Lots of tourism and eyah hahahahah ah ah ah a aljadsf lasdjf l;asdjf l;asdjkf l;asdjf l;jksdf l;asdj flajsd;
                   </Typography>
@@ -48,10 +76,11 @@ function HomeCard (props) {
               </CardActions>
             </Card>
           </Grid>
-     
+       ))}
       </Grid>
     </div>
         );
+    }
    
 }
 
