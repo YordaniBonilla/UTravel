@@ -42,8 +42,9 @@ export default class Home extends Component {
           <header>
             <HeaderComponent />
           </header>
-          
+          <div style={{padding : 50, margin: 10}}>
           {info}
+          </div>
           
       </div>
     );
