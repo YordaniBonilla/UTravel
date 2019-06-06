@@ -41,7 +41,7 @@ upload = (request, response) => {
     //do somethign with the file
     //e.g. save it to the database
     // you can access it using file.path
-    
+    console.log(file)
   })
 
   form.on('end', () => {
