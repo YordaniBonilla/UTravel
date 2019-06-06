@@ -1,35 +1,66 @@
-import React, { Component } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import Button from "@material-ui/core/Button";
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import TypoGraphy from '@material-ui/core/Typography'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import { Home, Fingerprint, AccountCircle , SwapHorizontalCircle } from '@material-ui/icons'
 
-export default class Header extends Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
+function Header (props){
+ 
+ 
     return (
-      <>
-        <NavLink to="/">
-          <Button style={{position: 'relative'}} variant="contained" color="secondary">
-            Home
+       <List component="nav">
+            <ListItem component="div">
+                <ListItemText inset>
+                    <TypoGraphy color="inherit" variant="title">
+                        <NavLink to="/">
+          <Button variant="contained" color="secondary">
+            Home <Home />
           </Button>
         </NavLink>
-        <NavLink to="/register">
-          <Button style={{position: 'relative', float: 'right'}} variant="contained" color="primary">
-           Register
+               </TypoGraphy>
+                </ListItemText>
+
+
+                <ListItemText inset>
+                    <TypoGraphy color="inherit" variant="title">
+                        <NavLink to="/register">
+          <Button  variant="contained" color="secondary">
+           Register <Fingerprint />
           </Button>
         </NavLink>
-        <NavLink to ="/login">
-          <Button style={{position: 'relative', float: 'right'}}variant="contained" color="primary">
-            Login
+               </TypoGraphy>
+                </ListItemText>
+
+
+                <ListItemText inset>
+                    <TypoGraphy color="inherit" variant="title">
+                        <NavLink to ="/login">
+          <Button variant="contained" color="secondary">
+            Login <AccountCircle />
           </Button>
         </NavLink>
-        <NavLink to ="/swap">
-          <Button style={{position: 'relative', float: 'right'}} variant="contained" color="primary">          
-            Swap
+               </TypoGraphy>
+                </ListItemText>
+
+             <ListItemText inset>
+                    <TypoGraphy color="inherit" variant="title">
+                         <NavLink to ="/swap">
+          <Button variant="contained" color="secondary">          
+            Swap <SwapHorizontalCircle/>
           </Button>
         </NavLink>
-      </>
+               </TypoGraphy>
+                </ListItemText>
+            </ListItem >
+
+        </List>
+       
     );
-  }
+  
 }
+
+export default Header

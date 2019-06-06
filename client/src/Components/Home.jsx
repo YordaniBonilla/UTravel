@@ -3,6 +3,10 @@ import HeaderComponent from "./HeaderComponent";
 import HomeCard from "../Components/HomeCard";
 import axios from "axios";
 import Greeting from "../Components/Greeting";
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar'
+import TypoGraphy from '@material-ui/core/Typography'
+import { LocalAirport } from '@material-ui/icons'
 
 export default class Home extends Component {
   constructor() {
@@ -39,13 +43,23 @@ export default class Home extends Component {
               )
     return (
       <div>
-          <header>
-            <HeaderComponent />
-          </header>
+          <AppBar color="primary" position="static">
+          <Toolbar>
+            <TypoGraphy variant="title"
+              color="inherit"
+            > <LocalAirport />
+              
+           </TypoGraphy>
+           <TypoGraphy variant="title"
+              color="inherit"
+            > 
+              <HeaderComponent/>
+           </TypoGraphy>
+          </Toolbar>
+          </AppBar>
           <div style={{padding : 50, margin: 10}}>
           {info}
           </div>
-          
       </div>
     );
   }
