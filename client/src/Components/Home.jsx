@@ -31,22 +31,19 @@ export default class Home extends Component {
   render() {
     console.log(this.state)
      const {data} = this.state
+     const info = data.map(data => 
+              <HomeCard
+              key={data.id} 
+              data={data}
+              />
+              )
     return (
       <div>
           <header>
             <HeaderComponent />
           </header>
-          { data ? 
-            <div>
-            {data.map(data => (
-              <HomeCard
-              key={data.id} 
-              data={data}
-              />
-              ))}
-            </div> :
-            <h1>No Data</h1>
-          }
+          
+          {info}
           
       </div>
     );

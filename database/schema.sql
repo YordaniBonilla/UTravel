@@ -23,7 +23,7 @@ country varchar (20)
     age int (2),
     userlocation int (2),
     destination int (2),
-    picture varchar (50),
+    file varchar (50),
     twitter varchar (50),
     facebook varchar (60), 
     foreign key (userlocation) references countries (id),

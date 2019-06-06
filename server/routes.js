@@ -1,6 +1,6 @@
 const database = require('../database/mysql.js');
 var path = require('path');
-const IncomingForm = require('formidable').Incomingform
+const IncomingForm = require('formidable').IncomingForm
 //allows access to functions in mysql.js database
 addUserInfo = (request, response) => {
   console.log(request.body.user)
@@ -41,7 +41,14 @@ upload = (request, response) => {
     //do somethign with the file
     //e.g. save it to the database
     // you can access it using file.path
-    console.log(file)
+   console.log(request.body.file)
+   const { data } = request.body;
+   database.addImage(data, res => {
+    response
+    .status(200)
+    .send(res)
+    .end();
+  });
   })
 
   form.on('end', () => {
@@ -49,7 +56,7 @@ upload = (request, response) => {
 
   form.parse(req)  
   })
-
+console.log(request.body)
 }
 
 module.exports = {

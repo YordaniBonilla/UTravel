@@ -21,6 +21,7 @@ class Swap extends Component {
   axios.post('/swap', formData, {
     onUploadProgress: progressEvent => {
       console.log(progressEvent.loaded / progressEvent.total)
+      
     }
   })
 }
@@ -29,6 +30,12 @@ class Swap extends Component {
       <div>
       <input type="file" onChange={this.fileChangedHandler}/>
       <button onClick={this.uploadHandler}>Upload!</button>
+      <input type="text" placeholder="about"/>
+      <input type="text" placeholder="userlocation"/>
+      <input type="text" placeholder="userdestination"/>
+      <input type="submit" />
+      
+
       </div>
       );
   }

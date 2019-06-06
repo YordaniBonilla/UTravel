@@ -30,6 +30,21 @@ const connection = mysql.createConnection(config);
     }
   );
 };
+addImage = (file, cb) => {
+  connection.query(
+  'INSERT INTO users (file) VALUES (?);',
+  [file],
+  (error,results) => {
+    if (error) {
+      throw error;
+    } else {
+      cb(results);
+    }
+  }
+    );
+  };
+  
+
 
 getLoginInfo = cb => {
 connection.query('SELECT email, userpassword from users' , (error, results) => {
