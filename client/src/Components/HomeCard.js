@@ -42,17 +42,17 @@ class HomeCard extends React.Component {
      
     return ( 
         <div style={{ marginTop: 20, padding: 30 }}>
-      <Grid container  spacing={40} justify="center">
+      <Grid container spacing={40} justify='center'>
           {data.map(data => (
-          <Grid item="true" key={data.id}>
+          <Grid item xs key={data.id}>
             <Card>
               <CardActionArea>
-                <CardMedia
+                <CardMedia 
                   component="img"
                   alt="Contemplative Reptile"
                   height="140"
                   image={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYPmVwbUC_e4UFi3rR-5v1_E7SrNkr2cdbMi77Q7AJpg2q7sIE6Q"}
-                  title="Contemplative Reptile"
+                  title="Find Your Ideal Vacation Spot!"
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">

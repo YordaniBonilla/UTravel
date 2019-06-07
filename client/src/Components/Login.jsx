@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import axios from 'axios';
-
+import {
+  FormControl,
+  InputLabel,
+  Input,
+  Button,
+  TextField
+} from "@material-ui/core";
 class  Login extends Component {
     constructor ()  {
         super();
@@ -34,11 +40,34 @@ class  Login extends Component {
 
     render () {
       return (
-        <div>
-          <input type="text" placeholder="email"/>
-          <input type="password" placeholder="password"/>
-          <input type="submit" onClick={this.onSubmit}/>
-        </div>
+        <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          margin: 20,
+          padding: 20
+        }}
+      >
+        <form style={{ width: "50%" }}>
+          <h1>Login</h1>
+
+          <FormControl margin="normal" >
+            <InputLabel htmlFor="name">Email</InputLabel>
+            <Input id="name" type="text" />
+          </FormControl>
+
+          <FormControl margin="normal" >
+            <InputLabel htmlFor="email">Password</InputLabel>
+            <Input id="email" type="email" />
+          </FormControl>
+
+    
+
+          <Button variant="contained" color="primary" size="medium" type="submit" onClick={this.onSubmit}>
+            Enter
+          </Button>
+        </form>
+      </div>
         );
     }
     
@@ -46,3 +75,7 @@ class  Login extends Component {
 }
 
 export default Login;
+
+ 
+      
+    

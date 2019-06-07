@@ -5,7 +5,7 @@ const IncomingForm = require('formidable').IncomingForm
 addUserInfo = (request, response) => {
   console.log(request.body.user)
   const { user } = request.body;
-  database.postUserInfo(user.fname, user.lname, user.email, user.userpassword, user.userphone, res => {
+  database.postUserInfo(user.fname, user.lname, user.email, user.userpassword,res => {
     response
     .status(200)
     .send(res)

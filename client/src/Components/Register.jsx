@@ -1,16 +1,20 @@
 import React, { Component } from "react";
 import axios from "axios";
+import {
+  FormControl,
+  InputLabel,
+  Input,
+  Button,
+  TextField
+} from "@material-ui/core";
 
 class Register extends Component {
   constructor() {
     super();
     this.state = {
       fname: "",
-      lname: "",
       email: "",
-      userpassword: "",
-      userphone: "",
-      users: []
+      userpassword: ""
     };
   }
 
@@ -23,10 +27,8 @@ class Register extends Component {
     e.preventDefault();
     const user = {
       fname: this.state.fname.toLowerCase(),
-      lname: this.state.lname.toLowerCase(),
       email: this.state.email.toLowerCase(),
       userpassword: this.state.userpassword,
-      userphone: this.state.userphone
     };
 
      axios.post("/Users", { user })
@@ -38,10 +40,8 @@ class Register extends Component {
 
       this.setState({
       fname: "",
-      lname: "",
       email: "",
-      userpassword: "",
-      userphone: ""
+      userpassword: ""
     });
     };
     
@@ -49,76 +49,73 @@ class Register extends Component {
   render() {
     const {
       fname,
-      lname,
       email,
-      userpassword,
-      userphone
+      userpassword
     } = this.state;
 
     return (
-      <form id="form" autoComplete="on">
-        <div style={{ color: "red" }}>
-          <label>First Name</label>
-          <input
-            required
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          margin: 20,
+          padding: 20
+        }}
+      >
+      <form style={{ width: "50%" }}>
+        <h1>Register Form</h1>
+         <FormControl margin="normal" fullWidth>
+            <InputLabel htmlFor="name">Name</InputLabel>
+            <Input required
             id="first-name"
             type="text"
             name="fname"
             value={fname}
-            onChange={this.onChange}
-          />
-        </div>
-        <div style={{ color: "red" }}>
-          <label>Last Name</label>
-          <input
-            required
-            id="last-name"
-            type="text"
-            name="lname"
-            value={lname}
-            onChange={this.onChange}
-          />
-        </div>
-        <div style={{ color: "red" }}>
-          <label>Email</label>
-          <input
-            required
+            onChange={this.onChange}/>
+          </FormControl>
+      
+        <FormControl margin="normal" fullWidth>
+            <InputLabel htmlFor="email">Email</InputLabel>
+            <Input required
             id="email"
             type="text"
             name="email"
             value={email}
-            onChange={this.onChange}
-          />
-        </div>
+            onChange={this.onChange} />
+          </FormControl>
         
-        <div style={{ color: "red" }}>
-          <label>Password</label>
-          <input
-            required
+         <FormControl margin="normal" fullWidth>
+            <InputLabel htmlFor="email">Message</InputLabel>
+            <Input  required
             id="password"
             type="password"
             maxLength="10"
             name="userpassword"
             value={userpassword}
-            onChange={this.onChange}
-          />
-        </div>
-        <div style={{ color: "red" }}>
-          <label>Phone Number</label>
-          <input
-            required
-            id="number"
-            type="text"
-            name="userphone"
-            value={userphone}
-            onChange={this.onChange}
-          />
-        </div>
-        <button type="submit" onClick={this.onSubmit} value="Submit">Submit</button>
-
+            onChange={this.onChange}/>
+          </FormControl>
+        
+      <Button variant="contained" color="primary" size="medium" type="submit" onClick={this.onSubmit}  value="Submit" >
+            Send
+          </Button>
+ 
       </form>
+      </div>
     );
   }
 }
 
 export default Register;
+
+        
+          
+
+         
+
+          
+
+         
+
+          
+       
+     
