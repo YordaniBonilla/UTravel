@@ -41,18 +41,17 @@ class HomeCard extends React.Component {
      console.log(data)
      
     return ( 
-        <div style={{ marginTop: 10, padding: 10 }}>
-      <Grid container  justify="flex-start">
+        <div style={{ marginTop: 20, padding: 30 }}>
+      <Grid container  spacing={40} justify="center">
           {data.map(data => (
-          <Grid container item xs={8} spacing={8} key={data.id}>
+          <Grid item="true" key={data.id}>
             <Card>
               <CardActionArea>
                 <CardMedia
                   component="img"
                   alt="Contemplative Reptile"
-                  height="150"
-                  style={{width: 280}}
-                  image={"https://www.thenational.ae/image/policy:1.842142:1553712143/928308426.jpg?f=16x9&w=1200&$p$f$w=ffc3ab3"}
+                  height="140"
+                  image={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYPmVwbUC_e4UFi3rR-5v1_E7SrNkr2cdbMi77Q7AJpg2q7sIE6Q"}
                   title="Contemplative Reptile"
                 />
                 <CardContent>
@@ -61,8 +60,8 @@ class HomeCard extends React.Component {
                   </Typography>
                   <Typography component="p">Phone: {data.userphone}</Typography>
                   <Typography component="p">Email: {data.email}</Typography>
-                  <Typography style={{width: 250}}component="p">About: Its a home right in the heart of the city , there are many parks around and restaurant near the area.
-                  Lots of tourism and eyah hahahahah ah ah ah a aljadsf lasdjf l;asdjf l;asdjkf l;asdjf l;jksdf l;asdj flajsd;
+                  <Typography component="p">About: Its a home right in the heart of the city , there are many parks around and restaurant near the area.
+                  
                   </Typography>
                 </CardContent>
               </CardActionArea>
