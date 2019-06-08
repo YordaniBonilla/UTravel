@@ -18,17 +18,18 @@ class Register extends Component {
     };
   }
 
-  onChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
-  
+  handleChange = (event) => {
+  this.setState({
+            [event.target.name]: event.target.value
+       });
+}
  
   onSubmit = e => {
     e.preventDefault();
     const user = {
       fname: this.state.fname.toLowerCase(),
       email: this.state.email.toLowerCase(),
-      userpassword: this.state.userpassword,
+      userpassword: this.state.userpassword
     };
 
      axios.post("/Users", { user })
@@ -70,8 +71,8 @@ class Register extends Component {
             id="first-name"
             type="text"
             name="fname"
-            value={fname}
-            onChange={this.onChange}/>
+            value={this.state.fname}
+            onChange={this.handleChange}/>
           </FormControl>
       
         <FormControl margin="normal" fullWidth>
@@ -80,19 +81,19 @@ class Register extends Component {
             id="email"
             type="text"
             name="email"
-            value={email}
-            onChange={this.onChange} />
+            value={this.state.email}
+            onChange={this.handleChange} />
           </FormControl>
         
          <FormControl margin="normal" fullWidth>
-            <InputLabel htmlFor="email">Message</InputLabel>
+            <InputLabel htmlFor="email">password</InputLabel>
             <Input  required
             id="password"
             type="password"
             maxLength="10"
             name="userpassword"
-            value={userpassword}
-            onChange={this.onChange}/>
+            value={this.state.userpassword}
+            onChange={this.handleChange}/>
           </FormControl>
         
       <Button variant="contained" color="primary" size="medium" type="submit" onClick={this.onSubmit}  value="Submit" >
