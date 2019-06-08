@@ -17,10 +17,10 @@ const connection = mysql.createConnection(config);
 //Example mysql query using Promises
 
 
- postUserInfo = (fname, lname, email, userpassword, cb) => {
+ postUserInfo = (fname,email, userpassword, cb) => {
   connection.query(
-    'INSERT INTO users (fname, lname, email, userpassword) VALUES (?, ?, ?, ?);',
-    [fname, lname, email, userpassword],
+    'INSERT INTO users (fname, email, userpassword) VALUES (?, ?, ?);',
+    [fname, email, userpassword],
     (error, results) => {
       if (error) {
         throw error;

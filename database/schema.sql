@@ -19,7 +19,7 @@ country varchar (20)
     about varchar (750),
     email varchar (40),
     userpassword varchar (20),
-    userphone varchar (20) NOT NULL,
+    userphone varchar (20),
     age int (2),
     userlocation int (2),
     destination int (2),
@@ -29,9 +29,7 @@ country varchar (20)
     foreign key (userlocation) references countries (id),
     foreign key (destination) references countries (id)
 );
-<!--SELECT MAX( `column` ) FROM `table` ;-->
-DELETE from [table name] where [field name] = 'whatever';
-end with \G to show data as vertical rows
+
     INSERT INTO countries
       (country)
     VALUE
