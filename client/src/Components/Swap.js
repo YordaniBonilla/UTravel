@@ -37,14 +37,9 @@ class Swap extends Component {
     if (this.state.selected.length === 0) {
       this.setState({ hasError: true });
     }
-     const swapInfo = {
-      selected: this.state.selected,
-      email: this.state.email.toLowerCase(),
-      about:"",
-      number:"",
-    };
-
-     axios.post("/swap/info", { swapInfo })
+     
+     const { selected, email, about, number } = this.state;
+     axios.post("/info", { selected, email, about, number })
       .then(response => {
     
       }).catch(error => {

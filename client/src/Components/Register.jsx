@@ -31,7 +31,6 @@ class Register extends Component {
       email: this.state.email.toLowerCase(),
       userpassword: this.state.userpassword
     };
-
      axios.post("/Users", { user })
       .then(response => {
     

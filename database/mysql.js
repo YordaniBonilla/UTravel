@@ -21,7 +21,7 @@ const connection = mysql.createConnection(config);
   connection.query(
     'INSERT INTO users (fname, email, userpassword) VALUES (?, ?, ?);',
     [fname, email, userpassword],
-    (error, results) => {
+    (error, results, fields) => {
       if (error) {
         throw error;
       } else {
@@ -31,10 +31,12 @@ const connection = mysql.createConnection(config);
   );
 };
 addImage = (file, cb) => {
+  var queryString = 'INSERT INTO users (file) VALUES (?);'
+  
   connection.query(
-  'INSERT INTO users (file) VALUES (?);',
+  queryString,
   [file],
-  (error,results) => {
+  (error,results, fields) => {
     if (error) {
       throw error;
     } else {
@@ -47,7 +49,10 @@ addImage = (file, cb) => {
 
 
 getLoginInfo = cb => {
-connection.query('SELECT email, userpassword from users' , (error, results) => {
+var queryString = 'SELECT email, userpassword from users'   
+connection.query(
+  queryString, 
+  (error, results, fields) => {
     if (error) {
       throw error;
     } else {
@@ -58,7 +63,9 @@ connection.query('SELECT email, userpassword from users' , (error, results) => {
 
 
 userCardInfo =  cb => {
-  connection.query('SELECT * from users', (error, rows) => {
+  var queryString = 'SELECT * from users'
+  connection.query(queryString, 
+    (error, rows, fields) => {
     if(error) {
       throw error;
     } else {
@@ -66,9 +73,29 @@ userCardInfo =  cb => {
     }
   });
 };
+
+swapComponentInfo = () => {
+
+  $max = 'SELECT MAX( customer_id ) FROM users;'
+  var queryString = 'INSERT INTO users (selected, email, about, number) VALUES (?, ?, ?, ?);';
+ 
+  connection.query(queryString,
+    [selected, email, about, number], 
+    (err, rows, fields) => {
+    if (err) throw err;
+ 
+    for (var i in rows) {
+        console.log(rows[i]);
+    }
+}
+
+    )
+}
+
 //making userInfo and insertone function available to other modules
 module.exports = {
   postUserInfo,
   getLoginInfo,
-  userCardInfo
+  userCardInfo,
+  swapComponentInfo
 };

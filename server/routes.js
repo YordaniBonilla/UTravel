@@ -59,11 +59,24 @@ upload = (request, response) => {
 console.log(request.body)
 }
 
+upDateUser= (request, response) => {
+  console.log(request.body)
+  const { selected, email, about, number} = req.body;
+  database.swapComponentInfo(selected, email, about, number, res => {
+   response.status(200)
+   .send(res)
+   .end();
+  })  
+
+
+}
+
 module.exports = {
   addUserInfo,
   refresh,
   loginVerification,
   homeCardInfo,
-  upload
+  upload,
+  upDateUser
 };
 

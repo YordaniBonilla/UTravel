@@ -31,6 +31,9 @@ app.get('/home', routes.homeCardInfo)
 
 app.post('/swap',upload)
 //if route has no get, page falls back to html to rerender component
+
+app.post('/info', routes.upDateUser)
+//method adds info to registered user database
 app.get('/*', routes.refresh)
 
 
