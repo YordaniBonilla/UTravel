@@ -15,8 +15,6 @@ class Swap extends Component {
   state = {
     selectedFile: null,
     selected: "",
-    hasError: false,
-    email:"",
     about:"",
     number:""
   }
@@ -28,29 +26,22 @@ class Swap extends Component {
     this.setState({
             [event.target.name]: event.target.value
        })
-    console.log(this.state[event.target.name])
   }
 
   handleClick() {
-
-    this.setState({ hasError: false });
-    if (this.state.selected.length === 0) {
-      this.setState({ hasError: true });
-    }
      
      const { selected, email, about, number } = this.state;
-     axios.post("/info", { selected, email, about, number })
+     axios.post("/Swap", { selected, about, number })
       .then(response => {
-    
       }).catch(error => {
         console.log(error);
       });
 
       this.setState({
       selected: "",
-      email: "",
       about: "",
       number:""
+
     });
   }
 
@@ -99,11 +90,6 @@ class Swap extends Component {
             <Input id="text" type="text" name="about" value={this.state.about} onChange={this.handleChange}/>
           </FormControl>
 
-          <FormControl margin="normal" fullWidth>
-            <InputLabel htmlFor="text">email</InputLabel>
-            <Input id="text" type="email" name="email" value={this.state.email} onChange={this.handleChange}/>
-          </FormControl>
-
           <FormControl  error={hasError}>
           <InputLabel htmlFor="name">Select Country</InputLabel>
           <Select
@@ -120,7 +106,7 @@ class Swap extends Component {
             <MenuItem value="Japan">Japan</MenuItem>
             <MenuItem value="India">India</MenuItem>
           </Select>
-          {hasError && <FormHelperText>This is required!</FormHelperText>}
+          
         </FormControl>
     
          <FormControl margin="normal" fullWidth>

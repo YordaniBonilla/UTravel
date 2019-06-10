@@ -74,13 +74,13 @@ userCardInfo =  cb => {
   });
 };
 
-swapComponentInfo = () => {
+swapComponentInfo = (userlocation, email, about, userphone ) => {
 
-  $max = 'SELECT MAX( customer_id ) FROM users;'
-  var queryString = 'INSERT INTO users (selected, email, about, number) VALUES (?, ?, ?, ?);';
+
+  var queryString = 'INSERT INTO users (userlocation, email, about, userphone) VALUES (?, ?, ?, ?);';
  
   connection.query(queryString,
-    [selected, email, about, number], 
+    [userlocation, email, about, number], 
     (err, rows, fields) => {
     if (err) throw err;
  
