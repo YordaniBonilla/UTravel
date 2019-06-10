@@ -33,7 +33,7 @@ class Register extends Component {
     };
      axios.post("/Users", { user })
       .then(response => {
-    
+      console.log('wut')
       }).catch(error => {
         console.log(error);
       });

@@ -14,9 +14,9 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 class Swap extends Component {
   state = {
     selectedFile: null,
-    selected: "",
+    userlocation: "",
     about:"",
-    number:""
+    userphone:""
   }
   
 
@@ -28,19 +28,20 @@ class Swap extends Component {
        })
   }
 
-  handleClick() {
-     
-     const { selected, email, about, number } = this.state;
-     axios.post("/Swap", { selected, about, number })
+  onSubmit = e => {
+     e.preventDefault();
+     const { userlocation, about, userphone } = this.state;
+     axios.post('/Swap', { userlocation, about, userphone })
       .then(response => {
+        console.log('switch')
       }).catch(error => {
         console.log(error);
       });
 
       this.setState({
-      selected: "",
+      userlocation: "",
       about: "",
-      number:""
+      userphone:""
 
     });
   }
@@ -67,7 +68,7 @@ class Swap extends Component {
   render() {
 
     
-    const { selected, hasError } = this.state;
+    const { userlocation } = this.state;
     return (
       <div
         style={{
@@ -81,8 +82,8 @@ class Swap extends Component {
           <h1>Contact Form</h1>
 
           <FormControl margin="normal" fullWidth>
-            <InputLabel htmlFor="text">Number</InputLabel>
-            <Input id="text" type="text" name="number" value={this.state.number} onChange={this.handleChange}/>
+            <InputLabel htmlFor="text">Telephone Number</InputLabel>
+            <Input id="text" type="text" name="userphone" value={this.state.userphone} onChange={this.handleChange}/>
           </FormControl>
 
           <FormControl margin="normal" fullWidth>
@@ -90,11 +91,11 @@ class Swap extends Component {
             <Input id="text" type="text" name="about" value={this.state.about} onChange={this.handleChange}/>
           </FormControl>
 
-          <FormControl  error={hasError}>
+          <FormControl  >
           <InputLabel htmlFor="name">Select Country</InputLabel>
           <Select
-            name="selected"
-            value={this.state.selected}
+            name="userlocation"
+            value={this.state.userlocation}
             onChange={this.handleChange}
             input={<Input id="name" />}
           >
@@ -115,10 +116,9 @@ class Swap extends Component {
             <Button onClick={this.uploadHandler} variant="contained" size="medium">Upload!</Button>
           </FormControl>
 
-          <button type="button" onClick={() => this.handleClick()}>
-          Submit
-        </button>
-
+          <Button variant="contained" color="primary" size="medium" type="submit" onClick={this.onSubmit}  value="Submit" >
+               Submit
+          </Button>
         </form>
       </div>
       );

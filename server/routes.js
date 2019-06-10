@@ -13,6 +13,18 @@ addUserInfo = (request, response) => {
   });
 };
 
+upDateUser= (request, response) => {
+  console.log(request.body)
+  const { userlocation, about, userphone} = request.body;
+  database.swapComponentInfo(userlocation, about, userphone, res => {
+   response.status(200)
+   .send(res)
+   .end();
+  })  
+
+
+}
+
 refresh = (req, res) => {
   res.sendFile(path.join(__dirname, '/../client/dist/index.html'), function(err) {
     if (err) {
@@ -59,17 +71,7 @@ upload = (request, response) => {
 console.log(request.body)
 }
 
-upDateUser= (request, response) => {
-  console.log(request.body)
-  const { selected, email, about, number} = req.body;
-  database.swapComponentInfo(selected, email, about, number, res => {
-   response.status(200)
-   .send(res)
-   .end();
-  })  
 
-
-}
 
 module.exports = {
   addUserInfo,

@@ -18,8 +18,9 @@ const connection = mysql.createConnection(config);
 
 
  postUserInfo = (fname,email, userpassword, cb) => {
+  var queryString = 'INSERT INTO users (fname, email, userpassword) VALUES (?, ?, ?);'
   connection.query(
-    'INSERT INTO users (fname, email, userpassword) VALUES (?, ?, ?);',
+    queryString,
     [fname, email, userpassword],
     (error, results, fields) => {
       if (error) {
@@ -30,6 +31,26 @@ const connection = mysql.createConnection(config);
     }
   );
 };
+
+swapComponentInfo = (count_id, about, userphone, cb) => {
+
+
+  var queryString = 'INSERT INTO users (count_id, about, userphone) VALUES (  SELECT count_id FROM countries WHERE countries.country = ? ), ?, ?);'
+ 
+  connection.query(queryString,
+    [count_id, about, userphone], 
+    (err, results, fields) => {
+    if (err) {
+      throw err;
+    } else {
+      cb(results)
+    }
+}
+
+    )
+}
+
+
 addImage = (file, cb) => {
   var queryString = 'INSERT INTO users (file) VALUES (?);'
   
@@ -74,23 +95,7 @@ userCardInfo =  cb => {
   });
 };
 
-swapComponentInfo = (userlocation, email, about, userphone ) => {
 
-
-  var queryString = 'INSERT INTO users (userlocation, email, about, userphone) VALUES (?, ?, ?, ?);';
- 
-  connection.query(queryString,
-    [userlocation, email, about, number], 
-    (err, rows, fields) => {
-    if (err) throw err;
- 
-    for (var i in rows) {
-        console.log(rows[i]);
-    }
-}
-
-    )
-}
 
 //making userInfo and insertone function available to other modules
 module.exports = {

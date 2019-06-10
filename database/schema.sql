@@ -7,9 +7,11 @@ USE UsersInfo;
 /*then we create a table in database and poppulate it*/
 CREATE TABLE countries
 (
-  id INT NOT NULL AUTO_INCREMENT PRIMARY key,
-country varchar (20)
-);
+count_id int not null auto_increment primary key,    
+country varchar (20),
+destination varchar(20)
+
+) ENGINE=InnoDB;
 
   CREATE TABLE users
   (
@@ -21,14 +23,13 @@ country varchar (20)
     userpassword varchar (20),
     userphone varchar (20),
     age int (2),
-    userlocation int (2),
-    destination int (2),
+    count_id int not null,
     file varchar (50),
     twitter varchar (50),
-    facebook varchar (60), 
-    foreign key (userlocation) references countries (id),
-    foreign key (destination) references countries (id)
-);
+    facebook varchar (60),
+    FOREIGN KEY (count_id) REFERENCES countries(count_id)
+    ON UPDATE CASCADE
+)ENGINE=InnoDB;
 
     INSERT INTO countries
       (country)
