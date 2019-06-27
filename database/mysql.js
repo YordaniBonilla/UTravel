@@ -18,10 +18,18 @@ const connection = mysql.createConnection(config);
 
 
  postUserInfo = (fname,email, userpassword, cb) => {
+<<<<<<< HEAD
   connection.query(
     'INSERT INTO users (fname, email, userpassword) VALUES (?, ?, ?);',
     [fname, email, userpassword],
     (error, results) => {
+=======
+  var queryString = 'INSERT INTO users (fname, email, userpassword) VALUES (?, ?, ?);'
+  connection.query(
+    queryString,
+    [fname, email, userpassword],
+    (error, results, fields) => {
+>>>>>>> f808734efc379d7688358aa89b84d245cd969fb9
       if (error) {
         throw error;
       } else {
@@ -30,11 +38,33 @@ const connection = mysql.createConnection(config);
     }
   );
 };
+
+swapComponentInfo = (count_id, about, userphone, cb) => {
+
+
+  var queryString = 'INSERT INTO users (count_id, about, userphone) VALUES (  SELECT count_id FROM countries WHERE countries.country = ? ), ?, ?);'
+ 
+  connection.query(queryString,
+    [count_id, about, userphone], 
+    (err, results, fields) => {
+    if (err) {
+      throw err;
+    } else {
+      cb(results)
+    }
+}
+
+    )
+}
+
+
 addImage = (file, cb) => {
+  var queryString = 'INSERT INTO users (file) VALUES (?);'
+  
   connection.query(
-  'INSERT INTO users (file) VALUES (?);',
+  queryString,
   [file],
-  (error,results) => {
+  (error,results, fields) => {
     if (error) {
       throw error;
     } else {
@@ -47,7 +77,10 @@ addImage = (file, cb) => {
 
 
 getLoginInfo = cb => {
-connection.query('SELECT email, userpassword from users' , (error, results) => {
+var queryString = 'SELECT email, userpassword from users'   
+connection.query(
+  queryString, 
+  (error, results, fields) => {
     if (error) {
       throw error;
     } else {
@@ -58,7 +91,9 @@ connection.query('SELECT email, userpassword from users' , (error, results) => {
 
 
 userCardInfo =  cb => {
-  connection.query('SELECT * from users', (error, rows) => {
+  var queryString = 'SELECT * from users'
+  connection.query(queryString, 
+    (error, rows, fields) => {
     if(error) {
       throw error;
     } else {
@@ -66,9 +101,13 @@ userCardInfo =  cb => {
     }
   });
 };
+
+
+
 //making userInfo and insertone function available to other modules
 module.exports = {
   postUserInfo,
   getLoginInfo,
-  userCardInfo
+  userCardInfo,
+  swapComponentInfo
 };
