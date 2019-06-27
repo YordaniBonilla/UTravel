@@ -26,17 +26,10 @@ destination varchar(20)
     count_id int not null,
     file varchar (50),
     twitter varchar (50),
-<<<<<<< HEAD
-    facebook varchar (60), 
-    foreign key (userlocation) references countries (id),
-    foreign key (destination) references countries (id)
-);
-=======
     facebook varchar (60),
     FOREIGN KEY (count_id) REFERENCES countries(count_id)
     ON UPDATE CASCADE
-)ENGINE=InnoDB;
->>>>>>> f808734efc379d7688358aa89b84d245cd969fb9
+)
 
     INSERT INTO countries
       (country)
