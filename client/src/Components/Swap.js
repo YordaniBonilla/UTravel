@@ -46,6 +46,7 @@ class Swap extends Component {
 
      axios.post("/swap/info", { swapInfo })
       .then(response => {
+        console.log(swapInfo)
     
       }).catch(error => {
         console.log(error);

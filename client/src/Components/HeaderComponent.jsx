@@ -17,7 +17,7 @@ function Header (props){
                 <ListItemText inset>
                     <TypoGraphy color="inherit" variant="title">
                         <NavLink to="/">
-          <Button variant="contained" color="secondary">
+          <Button variant="contained" size="medium" color="primary" >
             Home <Home />
           </Button>
         </NavLink>
@@ -28,7 +28,7 @@ function Header (props){
                 <ListItemText inset>
                     <TypoGraphy color="inherit" variant="title">
                         <NavLink to="/register">
-          <Button  variant="contained" color="secondary">
+          <Button  variant="contained" size="medium" color="primary" >
            Register <Fingerprint />
           </Button>
         </NavLink>
@@ -39,7 +39,7 @@ function Header (props){
                 <ListItemText inset>
                     <TypoGraphy color="inherit" variant="title">
                         <NavLink to ="/login">
-          <Button variant="contained" color="secondary">
+          <Button variant="contained" size="medium" color="primary" >
             Login <AccountCircle />
           </Button>
         </NavLink>
@@ -49,7 +49,7 @@ function Header (props){
              <ListItemText inset>
                     <TypoGraphy color="inherit" variant="title">
                          <NavLink to ="/swap">
-          <Button variant="contained" color="secondary">          
+          <Button variant="contained" size="medium" color="primary" >          
             Swap <SwapHorizontalCircle/>
           </Button>
         </NavLink>

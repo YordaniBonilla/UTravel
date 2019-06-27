@@ -5,7 +5,7 @@ import Greeting from "../Components/Greeting";
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar'
 import TypoGraphy from '@material-ui/core/Typography'
-import { LocalAirport } from '@material-ui/icons'
+import { DirectionsRun } from '@material-ui/icons'
 
 export default class Home extends Component {
   
@@ -19,7 +19,7 @@ export default class Home extends Component {
           <Toolbar>
             <TypoGraphy variant="title"
               color="inherit"
-            > <LocalAirport />
+            > <DirectionsRun />
               
            </TypoGraphy>
            <TypoGraphy variant="title"

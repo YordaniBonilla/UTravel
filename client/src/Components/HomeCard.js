@@ -61,7 +61,7 @@ class HomeCard extends React.Component {
                   <Typography component="p">Phone: {data.userphone}</Typography>
                   <Typography component="p">Email: {data.email}</Typography>
                   <Typography component="p">About: Its a home right in the heart of the city , there are many parks around and restaurant near the area.
-                  
+                  <Typography component="p">Number:</Typography>
                   </Typography>
                 </CardContent>
               </CardActionArea>

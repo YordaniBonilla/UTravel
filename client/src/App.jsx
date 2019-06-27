@@ -5,7 +5,7 @@ import Register from "./Components/Register.jsx";
 import Login from "./Components/Login.jsx";
 import Swap from "./Components/Swap";
 import Greeting from "./Components/Greeting";
-import GuestGreeting from "./Components/GuestGreeting"
+
 
 class App extends Component {
   constructor() {
