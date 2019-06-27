@@ -18,18 +18,11 @@ const connection = mysql.createConnection(config);
 
 
  postUserInfo = (fname,email, userpassword, cb) => {
-<<<<<<< HEAD
-  connection.query(
-    'INSERT INTO users (fname, email, userpassword) VALUES (?, ?, ?);',
-    [fname, email, userpassword],
-    (error, results) => {
-=======
   var queryString = 'INSERT INTO users (fname, email, userpassword) VALUES (?, ?, ?);'
   connection.query(
     queryString,
     [fname, email, userpassword],
     (error, results, fields) => {
->>>>>>> f808734efc379d7688358aa89b84d245cd969fb9
       if (error) {
         throw error;
       } else {
