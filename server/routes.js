@@ -1,7 +1,9 @@
+const path = require('path');
 const database = require('../database/mysql.js');
-var path = require('path');
-const IncomingForm = require('formidable').IncomingForm
-//allows access to functions in mysql.js database
+
+
+
+// allows access to functions in mysql.js database
 addUserInfo = (request, response) => {
   console.log(request.body.user)
   const { user } = request.body;
