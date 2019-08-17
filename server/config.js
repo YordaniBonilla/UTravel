@@ -23,8 +23,6 @@ app.get('/Login', routes.loginVerification);
 app.get('/home', routes.homeCardInfo);
 
 app.post('/Swap', routes.upDateUser);
-
-app.post('/swap', upload);
 // if route has no get, page falls back to html to rerender component
 
 // method adds info to registered user database
