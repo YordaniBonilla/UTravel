@@ -11,7 +11,7 @@ count_id int not null auto_increment primary key,
 country varchar (20),
 destination varchar(20)
 
-) ENGINE=InnoDB;
+) 
 
   CREATE TABLE users
   (
